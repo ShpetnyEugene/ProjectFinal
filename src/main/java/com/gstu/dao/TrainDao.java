@@ -1,103 +1,42 @@
 package com.gstu.dao;
 
+import com.gstu.executor.Executor;
+import com.gstu.mappers.TrainMapper;
 import com.gstu.models.Train;
 import com.gstu.services.DataBaseConnection;
 import org.apache.log4j.Logger;
 
-import java.sql.*;
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 public class TrainDao implements CrudDao<Train, Long> {
 
     private static Logger log = Logger.getLogger(TrainDao.class);
-    private static final String ID_TRAIN = "idTrain";
-    private static final String NAME = "name";
-    private static final String NUMBER_FREE_PLACES =  "numberFreePlaces";
 
+    private static final String SELECT_BY_ID_QUERY = "SELECT * FROM train WHERE idTrain = ?";
 
-    private Executor executor;
+    private static final String SELECT_ALL_QUERY = "SELECT * FROM train";
 
-    /*public TrainDao(Connection connection) {
-        this.executor = new Executor(connection);
+    private static final String SELECT_BY_DATE_QUERY = "SELECT * FROM train ... INNER JOIN schedule ... where date = ?";
+
+    private com.gstu.executor.Executor executor;
+
+    public TrainDao(Executor executor) {
+        this.executor = executor;
     }
-*/
+
+
 
     @Override
     public Train findById(Long id) {
-        DataBaseConnection dataBaseConnection = null;
-        Train train = null;
-        try {
-            dataBaseConnection = DataBaseConnection.getInstance();
-        } catch (SQLException e) {
-            log.error(e);
-            // FIXME: 11.12.2016
-            throw new DataAccessException("",e);
-        }
-
-        Connection connection = dataBaseConnection.getConnection();
-
-        try(PreparedStatement statement = connection.prepareStatement("select * from train WHERE idTrain = ?")) {
-
-            statement.setLong(1,id);
-
-            ResultSet resultSet = statement.executeQuery();
-            resultSet.next();
-            train = new Train(resultSet.getInt(ID_TRAIN), resultSet.getString(NAME), resultSet.getInt(NUMBER_FREE_PLACES));
-
-        } catch (SQLException e) {
-            log.error(e);
-            throw new DataAccessException("Train with id not found" + id, e);
-        }
-        return train;
-
-
-       /* try {
-           return executor.execQuery("select * from train WHERE idTrain = " + id,resultSet -> {
-                resultSet.next();
-                return new Train(resultSet.getLong(ID_TRAIN), resultSet.getString(NAME), resultSet.getInt(NUMBER_FREE_PLACES));
-            });
-        } catch (SQLException e) {
-            // FIXME: 12.12.2016 ОШИБКУ ОБРАБОТАТЬ
-            e.printStackTrace();
-        }
-        return null;*/
+        return executor.selectOne(SELECT_BY_ID_QUERY, new TrainMapper(), id);
     }
-
+    // Работает
     @Override
     public List<Train> findAll() {
-        List<Train> trains = new ArrayList<>();
-
-        DataBaseConnection dataBaseConnection = null;
-        try {
-            dataBaseConnection = DataBaseConnection.getInstance();
-        } catch (SQLException e) {
-            log.error(e);
-            // FIXME: 11.12.2016 ПУстое сообщение
-            throw new DataAccessException("",e);
-        }
-
-        Connection connection = dataBaseConnection.getConnection();
-
-        try(PreparedStatement statement = connection.prepareStatement("select * from train")) {
-
-            ResultSet resultSet = statement.executeQuery();
-
-
-            while (resultSet.next()) {
-                trains.add(new Train(
-                        resultSet.getInt(ID_TRAIN),
-                        resultSet.getString(NAME),
-                        resultSet.getInt(NUMBER_FREE_PLACES))
-                );
-
-            }
-        } catch (SQLException e) {
-            log.error(e);
-            // FIXME: 11.12.2016 String исправить возможно
-            throw new DataAccessException("Trains have found", e);
-        }
-        return trains; 
+        return executor.selectList(SELECT_ALL_QUERY,new TrainMapper());
     }
 
     @Override
@@ -116,7 +55,7 @@ public class TrainDao implements CrudDao<Train, Long> {
         Connection connection = dataBaseConnection.getConnection();
 
         try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM train")){
-            entity.getId();
+            entity.getIdTrain();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -134,7 +73,7 @@ public class TrainDao implements CrudDao<Train, Long> {
     @Override
     public Train deleteById(Long aLong) {
         // TODO возвращаемый тип можно же просто void
-        DataBaseConnection dataBaseConnection = null;
+       /* DataBaseConnection dataBaseConnection = null;
         try {
             dataBaseConnection = DataBaseConnection.getInstance();
         } catch (SQLException e) {
@@ -149,6 +88,8 @@ public class TrainDao implements CrudDao<Train, Long> {
             log.error(e);
             throw new DataAccessException("Train with id not found" + ID_TRAIN, e);
         }
+        return null;
+    }*/
         return null;
     }
 }

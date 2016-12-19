@@ -9,6 +9,7 @@ public class Schedule {
     private Date arrivalTime;
     private Date departureTime;
     private int price;
+    // TODO Или писать навзвание станций
     private int stationStartId;
     private int stationEndId;
 

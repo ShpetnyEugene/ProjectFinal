@@ -1,4 +1,8 @@
 package com.gstu.dao;
+/**
+ * @author Shpetny Eugene
+ * @version 1.0
+ * */
 
 public class DataAccessException extends RuntimeException {
 
@@ -10,4 +14,7 @@ public class DataAccessException extends RuntimeException {
         super(s,ex);
     }
 
+    public DataAccessException(Exception ex){
+        super(ex);
+    }
 }

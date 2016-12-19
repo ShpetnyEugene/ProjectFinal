@@ -1,49 +1,44 @@
 package com.gstu.services;
 
 import com.gstu.dao.UserDao;
+import com.gstu.executor.Executor;
 import com.gstu.models.User;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.sql.SQLException;
 
 public class UserService {
 
-    private static Map<String, User> users = new HashMap<>();
+    private final static Object lock = new Object();
 
-    public User getUserByEmail(String email) {
-        User user = null;
-        return UserService.users.get(email);
+    // Работает правильно
+    public User getUserByLogin(String login) {
+        UserDao userDao = null;
+
+        try {
+            userDao = new UserDao(new Executor(DataBaseConnection.getInstance().getConnection()));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if (userDao.findByLogin(login) != null){
+            return userDao.findByLogin(login);
+        }else {
+            return null;
+        }
+    }
+    
+    // Работает правильно
+    public boolean checkUserPassword(User user, String password) {
+       if (user.getPassword().equals(password)){
+           return true;
+       }else{
+           return false;
+       }
     }
 
-    public boolean checkUserPassword(String email, String password) {
-        UserDao userDao = new UserDao();
-
-        boolean bo = false;
-
-        List<User> users = userDao.findAll();
-        //User user = UserService.users.get(email);
-
-        for (int i = 0; i < users.size(); i++){
-            if (users.get(i).getLogin() == email && users.get(i).getPassword() == password){
-                return users.get(i).equals(password);
-            }
+    public boolean addUser(User user) {
+        synchronized (lock) {
+         // do logic
         }
-
-
-/*
-        if (user != null) {
-            return user.getPassword().equals(password);
-        } else {
-            return false;
-        }
-*/
-
-        return bo;
-    }
-
-    public synchronized boolean addUser(User user) {
-
         return false;
     }
 }

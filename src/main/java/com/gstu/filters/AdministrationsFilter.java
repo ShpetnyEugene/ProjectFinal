@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebFilter("/booking/adminMenu")
+@WebFilter("/adminMenu/*")
 public class AdministrationsFilter implements Filter {
 
     @Override

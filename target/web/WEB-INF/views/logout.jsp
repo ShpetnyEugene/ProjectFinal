@@ -4,6 +4,18 @@
     <title>Logout</title>
 </head>
 <body>
-   <center> <h1> BYE !</h1></center>
+    <c:if test = "${not empty user}">
+        <h3>${user.login}  ${user.role}</h3>
+        <form action="logout" method="post">
+            <input type="submit" value="logout">
+        </form>
+
+        <c:if test="${empty user}">
+            <h3>Guest</h3>
+            <a href="login">login</a>
+        </c:if>
+
+
+    </c:if>
 </body>
 </html>

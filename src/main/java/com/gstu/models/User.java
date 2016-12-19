@@ -12,6 +12,11 @@ public class User {
     private String password;
     private int role;// TODO ROLE как-то лучше сделать;
 
+    // TODO заменить
+
+    private Role role1;
+    private Sex sex;
+
     public User(long idUser, String firsName, String lastName, String patronymic, int age, String passportSerial, String login, String password, int role) {
         this.idUser = idUser;
         this.firsName = firsName;
@@ -21,6 +26,46 @@ public class User {
         this.passportSerial = passportSerial;
         this.login = login;
         this.password = password;
+        this.role = role;
+    }
+
+
+    public User() {
+    }
+
+    public void setIdUser(long idUser) {
+        this.idUser = idUser;
+    }
+
+    public void setFirsName(String firsName) {
+        this.firsName = firsName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setPassportSerial(String passportSerial) {
+        this.passportSerial = passportSerial;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRole(int role) {
         this.role = role;
     }
 

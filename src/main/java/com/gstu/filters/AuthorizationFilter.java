@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter("/booking/stations")
+@WebFilter("/adminMenu")
+
 public class AuthorizationFilter implements Filter {
 
     @Override
@@ -25,7 +26,13 @@ public class AuthorizationFilter implements Filter {
 
         User user = (User) req.getSession().getAttribute("user");
 
-        if(user!=null) {
+
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+
+        if(user!=null ) {
             filterChain.doFilter(req, resp);
         } else {
             resp.sendRedirect("/login");
