@@ -16,6 +16,7 @@ public class User {
 
     private Role role1;
 
+
     public User(long idUser, String firsName, String lastName, String patronymic, int age, String passportSerial, String login, String password, int role) {
         this.idUser = idUser;
         this.firsName = firsName;

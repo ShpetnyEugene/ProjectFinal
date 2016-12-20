@@ -4,6 +4,7 @@ import com.gstu.dao.UserDao;
 import com.gstu.executor.Executor;
 import com.gstu.models.User;
 import com.gstu.services.DataBaseConnection;
+import com.gstu.services.RegistrationService;
 import com.gstu.utils.ViewUtils;
 
 import javax.servlet.ServletException;
@@ -17,28 +18,39 @@ import java.sql.SQLException;
 @WebServlet("/registration")
 public class RegistrationServlet extends HttpServlet {
 
+    private static final String FIRST_NAME = "firstName";
+    private static final String LAST_NAME = "lastName";
+    private static final String LOGIN = "login";
+    private static final String PASSWORD = "password";
+    private static final String PATRONYMIC = "patronymic";
+    private static final String PASSPORT_SERIAL = "passportSerial";
+
+
+    private RegistrationService registrationService = new RegistrationService();
+
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String firstName = req.getParameter("firstName");
-        String lastName = req.getParameter("lastName");
-        String patronymic = req.getParameter("patronymic");
-        String login = req.getParameter("login");
-        String password = req.getParameter("password");
-        String passportSerial = req.getParameter("passportSerial");
+        String firstName = req.getParameter(FIRST_NAME);
+        String lastName = req.getParameter(LAST_NAME);
+        String patronymic = req.getParameter(PATRONYMIC);
+        String login = req.getParameter(LOGIN);
+        String password = req.getParameter(PASSWORD);
+        String passportSerial = req.getParameter(PASSPORT_SERIAL);
 
-        try {
-            UserDao userDao = new UserDao(new Executor(DataBaseConnection.getInstance().getConnection()));
-            userDao.insertUser(new User(firstName,lastName,patronymic,20,passportSerial,login,password,2));
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (registrationService.checkUserByLogin(login) || registrationService.checkUserByPassportSerial(passportSerial)) {
+            resp.sendRedirect("/registration");
+        } else {
+            resp.sendRedirect("/login");
+            try {
+                UserDao userDao = new UserDao(new Executor(DataBaseConnection.getInstance().getConnection()));
+                userDao.insertUser(new User(firstName, lastName, patronymic, 20, passportSerial, login, password, 2));
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-
-
-
-
-
-        req.getRequestDispatcher("/WEB-INF/views/registration.jsp").forward(req, resp);
     }
 
     @Override

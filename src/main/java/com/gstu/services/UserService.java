@@ -10,7 +10,7 @@ public class UserService {
 
     private final static Object lock = new Object();
 
-    // Работает правильно
+
     public User getUserByLogin(String login) {
         UserDao userDao = null;
 
@@ -38,6 +38,8 @@ public class UserService {
     public boolean addUser(User user) {
         synchronized (lock) {
          // do logic
+
+        // TODO
         }
         return false;
     }

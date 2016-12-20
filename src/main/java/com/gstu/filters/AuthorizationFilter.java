@@ -28,8 +28,7 @@ public class AuthorizationFilter implements Filter {
 
 
         //  TODO Починил
-        if (user == null && (!req.getRequestURI().equals("/login"))) {
-            System.out.println(req.getRequestURI());
+        if (user == null && ((!req.getRequestURI().equals("/login"))&& (!req.getRequestURI().equals("/registration")) )) {
             resp.sendRedirect("/login");
         } else {
 

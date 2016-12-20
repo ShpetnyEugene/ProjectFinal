@@ -14,6 +14,22 @@
 
     <title>Booking Tickets</title>
 
+
+    <!-- ... -->
+    <!-- 1. Подключить библиотеку jQuery -->
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/jquery-1.11.1.min.js"></script>
+    <!-- 2. Подключить скрипт moment-with-locales.min.js для работы с датами -->
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/moment-with-locales.min.js"></script>
+    <!-- 3. Подключить скрипт платформы Twitter Bootstrap 3 -->
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 4. Подключить скрипт виджета "Bootstrap datetimepicker" -->
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- 5. Подключить CSS платформы Twitter Bootstrap 3 -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css" />
+    <!-- 6. Подключить CSS виджета "Bootstrap datetimepicker" -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap-datetimepicker.min.css" />
+
+
     <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -36,9 +52,22 @@
 
   <body>
 
+  <c:if test = "${not empty user}">
+    <form action="home" method="post">
+      <input type="submit" value="Logout">
+    </form>
 
-  <div class="container">
-     <jsp:doBody/>
+
+    <h3>${user.login}  ${user.role}</h3>
+
+    <c:if test="${empty user}">
+
+      <a href="login">login</a>
+    </c:if>
+  </c:if>
+
+
+  <jsp:doBody/>
 
   </div>
 

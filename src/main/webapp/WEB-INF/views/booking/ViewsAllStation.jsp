@@ -30,7 +30,8 @@
             <div class="form-group">
         <input type="text" name = "arrivalDate" class="form-control" id="datetimepicker">
     </div>
-</div>
+    </div>
+        </div>
 
         <div class="row">
             <div class="col-xs-6">
@@ -38,9 +39,7 @@
                     <input type="text" name = "arrivalStation" class="form-control">
                 </div>
             </div>
-
-
-
+        </div>
             <input type="submit" value="Искать">
 </form>
 

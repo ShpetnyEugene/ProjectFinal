@@ -15,6 +15,9 @@ public class UserDao implements CrudDao<User, Long> {
     private static final String DELETE_BY_ID_QUERY = "DELETE FROM user WHERE idUser= ?";
     private static final String SELECT_BY_LOGIN_QUERY = "SELECT * FROM user WHERE login = ?";
     private static final String INSERT_NEW_USER = "INSERT INTO user (firstName,lastName,age,patronymic,passportSerial,login,password,role) VALUES(?,?,?,?,?,?,?,?) ";
+    private static final String SELECT_BY_PASSPORT_SERIAL_QUERY = "SELECT * FROM user WHERE passportSerial = ?";
+
+
 
     private com.gstu.executor.Executor executor;
     private static Logger log = Logger.getLogger(UserDao.class);
@@ -31,6 +34,10 @@ public class UserDao implements CrudDao<User, Long> {
 
     public User findByLogin(String login){
         return executor.selectOne(SELECT_BY_LOGIN_QUERY,new UserMapper(),login);
+    }
+
+    public User findByPassportSerial (String passportSerial){
+        return executor.selectOne(SELECT_BY_PASSPORT_SERIAL_QUERY,new UserMapper(),passportSerial);
     }
 
     @Override

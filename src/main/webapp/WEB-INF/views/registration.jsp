@@ -12,71 +12,53 @@
     <title>Registration</title>
 
 
-    <body>
+
     <h2>Регистрация</h2>
-    <form class="form-horizontal" method="post">
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="lastName">Фамилия:</label>
-            <div class="col-xs-9">
-                <input type="text" class="form-control"
-                       name = "lastName" id="lastName" placeholder="Введите фамилию">
+        <form class="form-horizontal" method="post">
+            <div class="form-group">
+                <label class="control-label col-xs-4"  for="lastName">Фамилия:</label>
+                <div class="col-xs-3">
+                    <input type="text" name = "lastName" class="form-control" id="lastName" placeholder="Введите фамилию">
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="firstName">Имя:</label>
-            <div class="col-xs-9">
-                <input type="text" name="firstName" class="form-control" id="firstName" placeholder="Введите имя">
+            <div class="form-group">
+                <label class="control-label col-xs-4" for="firstName">Имя:</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" name = "firstName" id="firstName" placeholder="Введите имя">
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="fatherName">Отчество:</label>
-            <div class="col-xs-9">
-                <input type="text"
-                      name = "patronymic" class="form-control" id="fatherName" placeholder="Введите отчество">
+            <div class="form-group">
+                <label class="control-label col-xs-4" for="fatherName">Отчество:</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" name = "patronymic" id="fatherName" placeholder="Введите отчество">
+                </div>
             </div>
-        </div>
+            <div class="form-group">
+                <label class="control-label col-xs-4">Дата рождения:</label>
+
+                <div class="col-xs-3">
+                        <input type="text" name = "date" class="form-control" id="datetimepicker">
+                    </div>
+            </div>
+
         <div class="form-group">
-            <label class="control-label col-xs-3">Дата рождения:</label>
+            <label class="control-label col-xs-4" for="inputEmail">Email:</label>
             <div class="col-xs-3">
-                <select class="form-control">
-                    <option>Дата</option>
-                </select>
-            </div>
-            <div class="col-xs-3">
-                <select class="form-control">
-                    <option>Месяц</option>
-                </select>
-            </div>
-            <div class="col-xs-3">
-                <select class="form-control">
-                    <option>Год</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="inputEmail">Email:</label>
-            <div class="col-xs-9">
                 <input type="email" name="login" class="form-control" id="inputEmail" placeholder="Email">
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-xs-3" for="inputPassword">Пароль:</label>
-            <div class="col-xs-9">
+            <label class="control-label col-xs-4" for="inputPassword">Пароль:</label>
+            <div class="col-xs-3">
                 <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Введите пароль">
             </div>
         </div>
+
+
         <div class="form-group">
-            <label class="control-label col-xs-3" for="postalAddress">Серия паспорта:</label>
-            <div class="col-xs-9">
-                <textarea rows="3" class="form-control" name="passportSerial"
-                          id="postalAddress" placeholder="Введите серию паспорта"></textarea>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-xs-offset-3 col-xs-9">
-                <label class="checkbox-inline">
-                    <input type="checkbox" value="agree">  Я согласен с <a href="#">условиями</a>.
-                </label>
+            <label class="control-label col-xs-4" for="firstName">Серия паспорта:</label>
+            <div class="col-xs-3">
+                <input type="text" name="passportSerial" class="form-control" id="postalAddress" placeholder="Введите серию паспорта">
             </div>
         </div>
         <br />
@@ -89,7 +71,14 @@
     </form>
 
 
+
     </jsp:body>
 </t:_layout>
 
-
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker').datetimepicker(
+                {pickTime: false, language: 'ru'}
+        );
+    });
+</script>

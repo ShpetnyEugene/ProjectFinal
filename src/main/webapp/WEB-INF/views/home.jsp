@@ -6,22 +6,7 @@
 <t:_layout>
     <jsp:body>
 
-       <a href="/login"> <button>Войти</button></a>
 
-
-        <c:if test = "${not empty user}">
-            <form action="home" method="post">
-                <input type="submit" value="logout">
-            </form>
-
-
-            <h3>${user.login}  ${user.role}</h3>
-
-            <c:if test="${empty user}">
-                <h3>Guest</h3>
-                <a href="login">login</a>
-            </c:if>
-        </c:if>
 
 
         <table class="table table-hover">
@@ -29,6 +14,7 @@
                 <tr>
                     <th>idTrain</th>
                     <th>Name</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,6 +22,7 @@
                     <tr>
                         <th>${train.idTrain}</th>
                         <th>${train.name}</th>
+                        <th> <a ></a></th>
                     </tr>
                 </c:forEach>
             </tbody>
