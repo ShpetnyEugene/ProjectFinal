@@ -25,7 +25,7 @@ public class UserService {
             return null;
         }
     }
-    
+
     // Работает правильно
     public boolean checkUserPassword(User user, String password) {
        if (user.getPassword().equals(password)){

@@ -14,7 +14,6 @@ import java.io.IOException;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
-  //  private static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(LoginServlet.class);
     private UserService service = new UserService();
 
 
@@ -31,11 +30,8 @@ public class LoginServlet extends HttpServlet {
 
         if (user != null && service.checkUserPassword(user,password)){
             request.getSession().setAttribute("user", user );
-
-            // TODO ПЕРЕнаправление на страницу
             response.sendRedirect("/home");
         }else {
-
             ViewUtils.doView("login",response,request);
         }
     }

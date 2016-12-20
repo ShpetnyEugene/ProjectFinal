@@ -14,7 +14,5 @@ public class AdministrationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/views/adminMenu/adminMenu.jsp").forward(req,resp);
     }
-
-
 }
 

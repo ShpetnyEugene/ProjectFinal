@@ -1,17 +1,16 @@
 package com.gstu.mappers;
 
 
-import com.gstu.dao.UserDao;
 import com.gstu.executor.Mapper;
 import com.gstu.models.User;
-import org.apache.log4j.Logger;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserMapper implements Mapper<User>{
 
-    private static Logger log = Logger.getLogger(UserDao.class);
+    //private static Logger log = Logger.getLogger(UserDao.class);
+
     private static String ID_USER = "idUSer";
     private static String FIRST_NAME = "firstName";
     private static String LAST_NAME = "lastName";

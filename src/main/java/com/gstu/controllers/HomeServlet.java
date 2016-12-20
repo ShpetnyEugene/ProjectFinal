@@ -30,7 +30,5 @@ public class HomeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().removeAttribute("user");
         resp.sendRedirect("/home");
-
-
     }
 }

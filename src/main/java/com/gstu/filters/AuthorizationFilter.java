@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter("/adminMenu")
+@WebFilter("/*")
 
 public class AuthorizationFilter implements Filter {
 
@@ -20,22 +20,20 @@ public class AuthorizationFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
-        HttpServletRequest req = (HttpServletRequest)servletRequest;
+        HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
 
 
         User user = (User) req.getSession().getAttribute("user");
 
 
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
-
-
-        if(user!=null ) {
-            filterChain.doFilter(req, resp);
-        } else {
+        //  TODO Починил
+        if (user == null && (!req.getRequestURI().equals("/login"))) {
+            System.out.println(req.getRequestURI());
             resp.sendRedirect("/login");
+        } else {
+
+            filterChain.doFilter(req, resp);
         }
     }
 

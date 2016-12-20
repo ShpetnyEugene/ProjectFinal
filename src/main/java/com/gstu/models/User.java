@@ -15,7 +15,6 @@ public class User {
     // TODO заменить
 
     private Role role1;
-    private Sex sex;
 
     public User(long idUser, String firsName, String lastName, String patronymic, int age, String passportSerial, String login, String password, int role) {
         this.idUser = idUser;
@@ -29,6 +28,16 @@ public class User {
         this.role = role;
     }
 
+    public User(String firsName, String lastName, String patronymic, int age, String passportSerial, String login, String password, int role) {
+        this.firsName = firsName;
+        this.lastName = lastName;
+        this.patronymic = patronymic;
+        this.age = age;
+        this.passportSerial = passportSerial;
+        this.login = login;
+        this.password = password;
+        this.role = role;
+    }
 
     public User() {
     }
