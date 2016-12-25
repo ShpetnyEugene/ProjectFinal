@@ -72,24 +72,7 @@ public class TrainDao implements CrudDao<Train, Long> {
 
     @Override
     public Train deleteById(Long aLong) {
-        // TODO возвращаемый тип можно же просто void
-       /* DataBaseConnection dataBaseConnection = null;
-        try {
-            dataBaseConnection = DataBaseConnection.getInstance();
-        } catch (SQLException e) {
-            log.error(e);
-            // FIXME: 11.12.2016
-            throw new DataAccessException("", e);
-        }
-        Connection connection = dataBaseConnection.getConnection();
-        try (PreparedStatement statement = connection.prepareStatement("DELETE FROM train WHERE idTrain= ?")) {
-
-        } catch (SQLException e) {
-            log.error(e);
-            throw new DataAccessException("Train with id not found" + ID_TRAIN, e);
-        }
-        return null;
-    }*/
+      // TODO записать
         return null;
     }
 }

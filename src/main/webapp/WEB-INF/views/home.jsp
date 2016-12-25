@@ -22,11 +22,20 @@
                     <tr>
                         <th>${train.idTrain}</th>
                         <th>${train.name}</th>
-                        <th> <a ></a></th>
+                        <th>
+                            <form name = "Delete" method="post">
+                            <button type="submit" name = ${train.idTrain}>
+                                Delete
+                            </button>
+                            </form>
+                        </th>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
 
+
+
     </jsp:body>
+
 </t:_layout>

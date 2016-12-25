@@ -15,11 +15,7 @@ public class RegistrationService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        if (userDao.findByLogin(login) != null){
-            return true;
-        }else {
-            return false;
-        }
+        return userDao.findByLogin(login) != null;
     }
 
     public boolean checkUserByPassportSerial (String passportSerial){

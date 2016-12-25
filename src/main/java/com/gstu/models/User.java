@@ -6,16 +6,13 @@ public class User {
     private String firsName;
     private String lastName;
     private String patronymic;
+    // TODO заменить на private Date date
     private int age;
     private String passportSerial;
     private String login;
     private String password;
-    private int role;// TODO ROLE как-то лучше сделать;
-
-    // TODO заменить
-
-    private Role role1;
-
+    // TODO заменить на private Role role
+    private int role;
 
     public User(long idUser, String firsName, String lastName, String patronymic, int age, String passportSerial, String login, String password, int role) {
         this.idUser = idUser;

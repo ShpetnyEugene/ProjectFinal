@@ -1,7 +1,6 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags/"%>
-
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags/" %>
 
 
 <t:_layout>
@@ -9,67 +8,75 @@
     <jsp:body>
 
 
-    <title>Registration</title>
+        <title>Registration</title>
 
 
-
-    <h2>Регистрация</h2>
+        <h2 class="form-signin-heading">Регистрация</h2>
         <form class="form-horizontal" method="post">
             <div class="form-group">
-                <label class="control-label col-xs-4"  for="lastName">Фамилия:</label>
+                <label class="control-label col-xs-4" for="lastName">Фамилия:</label>
                 <div class="col-xs-3">
-                    <input type="text" name = "lastName" class="form-control" id="lastName" placeholder="Введите фамилию">
+                    <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Введите фамилию">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-xs-4" for="firstName">Имя:</label>
                 <div class="col-xs-3">
-                    <input type="text" class="form-control" name = "firstName" id="firstName" placeholder="Введите имя">
+                    <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Введите имя">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-xs-4" for="fatherName">Отчество:</label>
                 <div class="col-xs-3">
-                    <input type="text" class="form-control" name = "patronymic" id="fatherName" placeholder="Введите отчество">
+                    <input type="text" class="form-control" name="patronymic" id="fatherName"
+                           placeholder="Введите отчество">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-xs-4">Дата рождения:</label>
 
                 <div class="col-xs-3">
-                        <input type="text" name = "date" class="form-control" id="datetimepicker">
-                    </div>
+                    <input type="text" name="date" class="form-control" id="datetimepicker">
+                </div>
             </div>
 
-        <div class="form-group">
-            <label class="control-label col-xs-4" for="inputEmail">Email:</label>
-            <div class="col-xs-3">
-                <input type="email" name="login" class="form-control" id="inputEmail" placeholder="Email">
+            <div class="form-group">
+                <label class="control-label col-xs-4" for="inputEmail">Email:</label>
+                <div class="col-xs-3">
+                    <input type="email" name="login" class="form-control" id="inputEmail" placeholder="Email">
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-4" for="inputPassword">Пароль:</label>
-            <div class="col-xs-3">
-                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Введите пароль">
+            <div class="form-group">
+                <label class="control-label col-xs-4" for="inputPassword">Пароль:</label>
+                <div class="col-xs-3">
+                    <input type="password" name="password" class="form-control" id="inputPassword"
+                           placeholder="Введите пароль">
+                </div>
             </div>
-        </div>
 
 
-        <div class="form-group">
-            <label class="control-label col-xs-4" for="firstName">Серия паспорта:</label>
-            <div class="col-xs-3">
-                <input type="text" name="passportSerial" class="form-control" id="postalAddress" placeholder="Введите серию паспорта">
+            <div class="form-group">
+                <label class="control-label col-xs-4" for="firstName">Серия паспорта:</label>
+                <div class="col-xs-3">
+                    <input type="text" name="passportSerial" class="form-control" id="postalAddress"
+                           placeholder="Введите серию паспорта">
+                </div>
             </div>
-        </div>
-        <br />
-        <div class="form-group">
-            <div class="col-xs-offset-3 col-xs-9">
-                <input type="submit" class="btn btn-primary" value="Регистрация">
-                <input type="reset" class="btn btn-default" value="Очистить форму">
-            </div>
-        </div>
-    </form>
 
+            <div class="form-group">
+                <div class="col-xs-offset-4 col-xs-9">
+                    <input type="submit" class="btn btn-primary" value="Регистрация">
+                    <input type="reset" class="btn btn-default" value="Очистить форму">
+                </div>
+            </div>
+
+
+            <br>
+            <p style="color:red;">${error}</p>
+
+
+
+        </form>
 
 
     </jsp:body>

@@ -34,6 +34,7 @@ public class UserMapper implements Mapper<User>{
         user.setLogin(resultSet.getString(LOGIN));
         user.setPassword(resultSet.getString(PASSWORD));
         user.setRole(resultSet.getInt(ROLE));
+        // TODO Тут писать result.getObject
         return user;
     }
 }

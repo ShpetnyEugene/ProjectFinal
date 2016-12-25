@@ -1,11 +1,10 @@
 package com.gstu.controllers;
 
-import com.gstu.dao.UserDao;
-import com.gstu.executor.Executor;
 import com.gstu.models.User;
-import com.gstu.services.DataBaseConnection;
 import com.gstu.services.RegistrationService;
+import com.gstu.services.UserService;
 import com.gstu.utils.ViewUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,10 +23,9 @@ public class RegistrationServlet extends HttpServlet {
     private static final String PASSWORD = "password";
     private static final String PATRONYMIC = "patronymic";
     private static final String PASSPORT_SERIAL = "passportSerial";
-
+    private static final String BIRTHDAY = "birthday";
 
     private RegistrationService registrationService = new RegistrationService();
-
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,20 +35,43 @@ public class RegistrationServlet extends HttpServlet {
         String login = req.getParameter(LOGIN);
         String password = req.getParameter(PASSWORD);
         String passportSerial = req.getParameter(PASSPORT_SERIAL);
+        //String birthday = req.getParameter(BIRTHDAY);
 
+        String errorMessages = "";
+        if(StringUtils.isBlank(lastName)) {
+            errorMessages += "last name is empty ";
+        }
 
-        if (registrationService.checkUserByLogin(login) || registrationService.checkUserByPassportSerial(passportSerial)) {
-            resp.sendRedirect("/registration");
+        if ( StringUtils.isNotBlank(errorMessages)
+                || registrationService.checkUserByLogin(login)
+                        || registrationService.checkUserByPassportSerial(passportSerial)) {
+
+            req.setAttribute("error", errorMessages);
+
+            ViewUtils.doView("registration", resp, req);
         } else {
             resp.sendRedirect("/login");
-            try {
-                UserDao userDao = new UserDao(new Executor(DataBaseConnection.getInstance().getConnection()));
-                userDao.insertUser(new User(firstName, lastName, patronymic, 20, passportSerial, login, password, 2));
 
+            try {
+                UserService userService = new UserService();
+                userService.addUser(new User(firstName, lastName, patronymic, 20, passportSerial, login, password, 2));
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+
+
+            /*try {
+                // Replace by service call
+                UserDao userDao = new UserDao(new Executor(DataBaseConnection.getInstance().getConnection()));
+                userDao.insertUser(new User(firstName, lastName, patronymic, 20, passportSerial, login, password, 2));
+//                userDao.insertUser(new User(firstName, lastName, patronymic, 20, passportSerial, login, password, Role.USER));
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }*/
         }
+
+
     }
 
     @Override

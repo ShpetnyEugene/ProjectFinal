@@ -21,13 +21,20 @@ public class HomeServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        User user = (User) request.getAttribute("user");
+//
 
-        request.setAttribute("trains", trainService.allTrains());
+//        User user1 = (User) request.getSession().getAttribute("user");
+
+
+            request.setAttribute("trains", trainService.allTrains());
         request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        System.out.println(req.getSession().getAttribute("Delete"));
         req.getSession().removeAttribute("user");
         resp.sendRedirect("/home");
     }

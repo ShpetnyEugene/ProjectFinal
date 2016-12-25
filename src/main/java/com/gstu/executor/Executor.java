@@ -79,13 +79,12 @@ public class Executor {
             }
         } else {
             // TODO
-            //log warning
+
         }
     }
 
     private void setParam(PreparedStatement stmt, int i, Object object) throws SQLException {
 
-        // TODO add other types
         Class c = object.getClass();
         if (object instanceof String) {
             stmt.setString(i, (String) object);

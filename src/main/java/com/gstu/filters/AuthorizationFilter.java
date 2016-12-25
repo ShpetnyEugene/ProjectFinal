@@ -1,6 +1,5 @@
 package com.gstu.filters;
 
-
 import com.gstu.models.User;
 
 import javax.servlet.*;
@@ -23,19 +22,18 @@ public class AuthorizationFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
 
-
         User user = (User) req.getSession().getAttribute("user");
 
-
-        //  TODO Починил
-        if (user == null && ((!req.getRequestURI().equals("/login"))&& (!req.getRequestURI().equals("/registration")) )) {
+        if (user == null
+                && ((!req.getRequestURI().equals("/login"))
+                && (!req.getRequestURI().equals("/config/language"))
+                && (!req.getRequestURI().equals("/registration")) )
+                && (!req.getRequestURI().startsWith("/resources"))) {
             resp.sendRedirect("/login");
         } else {
-
             filterChain.doFilter(req, resp);
         }
     }
-
     @Override
     public void destroy() {
     }

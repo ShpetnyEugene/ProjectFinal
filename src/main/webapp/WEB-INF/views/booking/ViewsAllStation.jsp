@@ -1,57 +1,47 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Stations</title>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags/" %>
 
-    <head>
-        <!-- ... -->
-        <!-- 1. Подключить библиотеку jQuery -->
-        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/jquery-1.11.1.min.js"></script>
-        <!-- 2. Подключить скрипт moment-with-locales.min.js для работы с датами -->
-        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/moment-with-locales.min.js"></script>
-        <!-- 3. Подключить скрипт платформы Twitter Bootstrap 3 -->
-        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
-        <!-- 4. Подключить скрипт виджета "Bootstrap datetimepicker" -->
-        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
-        <!-- 5. Подключить CSS платформы Twitter Bootstrap 3 -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css" />
-        <!-- 6. Подключить CSS виджета "Bootstrap datetimepicker" -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap-datetimepicker.min.css" />
-    </head>
+<title>Views all Station</title>
 
+<t:_layout>
+    <jsp:body>
 
-
-</head>
-
-<form method="post">
-
-    <div class="row">
-        <div class="col-xs-6">
+        <form class="form-horizontal" method="post">
             <div class="form-group">
-        <input type="text" name = "arrivalDate" class="form-control" id="datetimepicker">
-    </div>
-    </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-6">
-                <div class="form-group">
-                    <input type="text" name = "arrivalStation" class="form-control">
+                <label class="control-label col-xs-5" for="lastName">Станция отправления:</label>
+                <div class="col-xs-3">
+                    <input type="text" name="stationArrival" class="form-control" id="lastName"
+                           placeholder="Введите станцию отправления">
                 </div>
             </div>
-        </div>
-            <input type="submit" value="Искать">
-</form>
+            <div class="form-group">
+                <label class="control-label col-xs-5" for="firstName">Станция прибытия:</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" name="firstName" id="firstName"
+                           placeholder="Введите станцию прибытия">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-xs-5">Дата отправления:</label>
+
+                <div class="col-xs-3">
+                    <input type="text" name="date" class="form-control" id="datetimepicker">
+                </div>
+            </div>
+            <div class="form-signin">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
+            </div>
+        </form>
 
 
-
-
-
-<script type="text/javascript">
-    $(function () {
-        $('#datetimepicker').datetimepicker(
-                {pickTime: false, language: 'ru'}
-        );
-    });
-</script>
-</html>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker').datetimepicker(
+                        {pickTime: false, language: 'ru'}
+                );
+            });
+        </script>
+    </jsp:body>
+</t:_layout>

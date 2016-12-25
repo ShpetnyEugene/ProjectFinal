@@ -52,12 +52,12 @@ public class UserDao implements CrudDao<User, Long> {
 
     @Override
     public User update(User entity) {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public User save(User entity) {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override

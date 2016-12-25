@@ -10,36 +10,26 @@ public class UserService {
 
     private final static Object lock = new Object();
 
+    private final UserDao userDao;
+
+    public UserService() throws SQLException {
+        this.userDao = new UserDao(new Executor(DataBaseConnection.getInstance().getConnection()));
+    }
 
     public User getUserByLogin(String login) {
-        UserDao userDao = null;
-
-        try {
-            userDao = new UserDao(new Executor(DataBaseConnection.getInstance().getConnection()));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        if (userDao.findByLogin(login) != null){
-            return userDao.findByLogin(login);
-        }else {
-            return null;
-        }
+        return userDao.findByLogin(login);
     }
 
     // Работает правильно
     public boolean checkUserPassword(User user, String password) {
-       if (user.getPassword().equals(password)){
-           return true;
-       }else{
-           return false;
-       }
+        return user.getPassword().equals(password);
     }
 
     public boolean addUser(User user) {
         synchronized (lock) {
-         // do logic
+            // TODO check in login don't repeat
 
-        // TODO
+            userDao.insertUser(user);
         }
         return false;
     }

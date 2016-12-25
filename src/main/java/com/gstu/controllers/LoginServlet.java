@@ -10,12 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
-    private UserService service = new UserService();
+    private UserService service;
 
+    @Override
+    public void init() throws ServletException {
+        try {
+            service = new UserService();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ViewUtils.doView("login",response,request);

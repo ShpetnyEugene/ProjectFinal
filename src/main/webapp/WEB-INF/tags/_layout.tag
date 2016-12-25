@@ -1,5 +1,6 @@
 <%@tag description="Overall Page template" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,13 +53,26 @@
 
   <body>
 
+  <fmt:setBundle basename="messages" var="messages"/>
+
+
+
   <c:if test = "${not empty user}">
-    <form action="home" method="post">
-      <input type="submit" value="Logout">
-    </form>
+    <%--<form action="home" align="right" method="post">--%>
+      <%--<input type="submit" align="right" value="Logout">--%>
+    <%--</form>--%>
 
 
-    <h3>${user.login}  ${user.role}</h3>
+
+    <ul class="btn btn-inverse">
+      <li class="next">
+        <form action="home"  method="post">
+          <input type="submit"  value="Logout">
+        </form>
+      </li>
+    </ul>
+
+    <h5><fmt:message key="hello" bundle="${messages}" /> ${user.login}  ${user.role}</h5>
 
     <c:if test="${empty user}">
 
