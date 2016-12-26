@@ -1,41 +1,16 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags/"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
 <t:_layout>
     <jsp:body>
 
+        <h1 class="text-center">Добро пожаловать в систему по заказу <p> железнодорожных билетов</h1>
 
-
-
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>idTrain</th>
-                    <th>Name</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="train" items="${trains}">
-                    <tr>
-                        <th>${train.idTrain}</th>
-                        <th>${train.name}</th>
-                        <th>
-                            <form name = "Delete" method="post">
-                            <button type="submit" name = ${train.idTrain}>
-                                Delete
-                            </button>
-                            </form>
-                        </th>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-
-
-
+        <div class="col-md-2 col-md-offset-5">
+            <a href="booking/ViewsAllStation" type="button" class="btn btn-lg btn-primary btn-block">Сделать заказ</a>
+        </div>
     </jsp:body>
-
 </t:_layout>

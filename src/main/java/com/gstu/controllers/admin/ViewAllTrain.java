@@ -1,9 +1,8 @@
-package com.gstu.controllers;
+package com.gstu.controllers.admin;
 
 import com.gstu.services.RecordsTrainService;
 import com.gstu.services.TrainService;
 import com.gstu.services.implementations.ServiceFactory;
-import com.gstu.utils.ViewUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,9 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/home")
-public class HomeServlet extends HttpServlet {
+@WebServlet("/admin-menu/views-all-train")
 
+public class ViewAllTrain extends HttpServlet {
     private TrainService trainService;
 
     @Override
@@ -23,12 +22,8 @@ public class HomeServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        User user = (User) request.getAttribute("user");
-//
-
-//        User user1 = (User) request.getSession().getAttribute("user");
         request.setAttribute("trains", trainService.allTrains());
-        request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/adminMenu/viewAllTrain.jsp").forward(request, response);
     }
 
     @Override
@@ -37,8 +32,12 @@ public class HomeServlet extends HttpServlet {
 
         System.out.println(req.getParameter("Delete"));
         RecordsTrainService recService = new RecordsTrainService();
-        recService.DeleteTrainById(Long.getLong(req.getParameter("Delete")));
-        ViewUtils.doView("home",resp,req);
+        recService.DeleteTrainById(Long.parseLong(req.getParameter("Delete")));
 
+
+        resp.sendRedirect("/admin-menu/views-all-train");
+        //req.getRequestDispatcher("/WEB-INF/views/adminMenu/viewAllTrain.jsp").forward(req, resp);
+
+//        ViewUtils.doView("adminMenu/viewAllTrain",resp,req);
     }
 }

@@ -11,43 +11,43 @@
         <title>Registration</title>
 
 
-        <h2 class="form-signin-heading">Регистрация</h2>
+        <h1 class="text-center">Регистрация</h1>
         <form class="form-horizontal" method="post">
-            <div class="form-group">
-                <label class="control-label col-xs-4" for="lastName">Фамилия:</label>
+            <div class="form-group" style="margin-right: 0">
+                <label class="control-label col-xs-5" for="lastName">Фамилия:</label>
                 <div class="col-xs-3">
                     <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Введите фамилию">
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-xs-4" for="firstName">Имя:</label>
+            <div class="form-group" style="margin-right: 0">
+                <label class="control-label col-xs-5" for="firstName">Имя:</label>
                 <div class="col-xs-3">
                     <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Введите имя">
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-xs-4" for="fatherName">Отчество:</label>
+            <div class="form-group" style="margin-right: 0">
+                <label class="control-label col-xs-5" for="fatherName">Отчество:</label>
                 <div class="col-xs-3">
                     <input type="text" class="form-control" name="patronymic" id="fatherName"
                            placeholder="Введите отчество">
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-xs-4">Дата рождения:</label>
+            <div class="form-group" style="margin-right: 0">
+                <label class="control-label col-xs-5">Дата рождения:</label>
 
                 <div class="col-xs-3">
                     <input type="text" name="date" class="form-control" id="datetimepicker">
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="control-label col-xs-4" for="inputEmail">Email:</label>
+            <div class="form-group" style="margin-right: 0">
+                <label class="control-label col-xs-5" for="inputEmail">Email:</label>
                 <div class="col-xs-3">
                     <input type="email" name="login" class="form-control" id="inputEmail" placeholder="Email">
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-xs-4" for="inputPassword">Пароль:</label>
+            <div class="form-group" style="margin-right: 0">
+                <label class="control-label col-xs-5" for="inputPassword">Пароль:</label>
                 <div class="col-xs-3">
                     <input type="password" name="password" class="form-control" id="inputPassword"
                            placeholder="Введите пароль">
@@ -55,25 +55,23 @@
             </div>
 
 
-            <div class="form-group">
-                <label class="control-label col-xs-4" for="firstName">Серия паспорта:</label>
+            <div class="form-group" style="margin-right: 0">
+                <label class="control-label col-xs-5" for="firstName">Серия паспорта:</label>
                 <div class="col-xs-3">
                     <input type="text" name="passportSerial" class="form-control" id="postalAddress"
                            placeholder="Введите серию паспорта">
                 </div>
             </div>
 
-            <div class="form-group">
-                <div class="col-xs-offset-4 col-xs-9">
+                <div class="col-md-3 col-md-offset-5">
+
                     <input type="submit" class="btn btn-primary" value="Регистрация">
                     <input type="reset" class="btn btn-default" value="Очистить форму">
-                </div>
-            </div>
 
+                </div>
 
             <br>
             <p style="color:red;">${error}</p>
-
 
 
         </form>

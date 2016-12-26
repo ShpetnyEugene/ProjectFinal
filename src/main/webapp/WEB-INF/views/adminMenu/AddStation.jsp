@@ -3,7 +3,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags/" %>
 
 
-<title>Add Train</title>
+<title>Add Station</title>
 
 <t:_layout>
     <jsp:body>
@@ -11,14 +11,14 @@
 
         <form method="post" class="form-horizontal">
             <div class="form-group">
-                <label class="control-label col-xs-4" for="firstName">Название поезда:</label>
+                <label class="control-label col-xs-3" for="station">Название станции:</label>
                 <div class="col-xs-4">
-                    <input type="text" name="nameStation" class="form-control" id="firstName"
+                    <input type="text" name="nameStation" class="form-control" id="station"
                            placeholder="Введите название поезда">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-xs-4" for="lastName">Количество свободных мест:</label>
+                <label class="control-label col-xs-3" for="lastName">Количество свободных мест:</label>
                 <div class="col-xs-4">
                     <input type="text" name="nameStation" class="form-control" id="lastName"
                            placeholder="Введите колличество свободных мест">
@@ -33,12 +33,6 @@
             </div>
         </form>
 
-
-        <div class="col-xs-offset-5 col-xs-10">
-            <div class="col-xs-3">
-                <a href="/admin-menu" type="button" class="btn btn-lg btn-primary btn-block">Вернуться в админ меню</a>
-            </div>
-        </div>
 
     </jsp:body>
 </t:_layout>

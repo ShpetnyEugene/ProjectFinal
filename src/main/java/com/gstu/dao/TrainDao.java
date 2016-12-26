@@ -21,6 +21,8 @@ public class TrainDao implements CrudDao<Train, Long> {
 
     private static final String SELECT_BY_DATE_QUERY = "SELECT * FROM train ... INNER JOIN schedule ... where date = ?";
 
+    private static final String DELETE_BY_ID_QUERY = "DELETE FROM train WHERE idTrain = ?";
+
     private com.gstu.executor.Executor executor;
 
     public TrainDao(Executor executor) {
@@ -28,15 +30,15 @@ public class TrainDao implements CrudDao<Train, Long> {
     }
 
 
-
     @Override
     public Train findById(Long id) {
         return executor.selectOne(SELECT_BY_ID_QUERY, new TrainMapper(), id);
     }
+
     // Работает
     @Override
     public List<Train> findAll() {
-        return executor.selectList(SELECT_ALL_QUERY,new TrainMapper());
+        return executor.selectList(SELECT_ALL_QUERY, new TrainMapper());
     }
 
     @Override
@@ -49,12 +51,12 @@ public class TrainDao implements CrudDao<Train, Long> {
         } catch (SQLException e) {
             log.error(e);
             // FIXME: 11.12.2016 Пустое сообщение
-            throw new DataAccessException("",e);
+            throw new DataAccessException("", e);
         }
 
         Connection connection = dataBaseConnection.getConnection();
 
-        try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM train")){
+        try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM train")) {
             entity.getIdTrain();
 
         } catch (SQLException e) {
@@ -72,7 +74,7 @@ public class TrainDao implements CrudDao<Train, Long> {
 
     @Override
     public Train deleteById(Long aLong) {
-      // TODO записать
+        executor.execUpdate(DELETE_BY_ID_QUERY, aLong);
         return null;
     }
 }

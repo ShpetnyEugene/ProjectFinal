@@ -27,14 +27,10 @@
 <%--bundle="messages"--%>
 
 
-<form method="post"><input type="submit">
-    <c:if test="${not empty lang}">
-        <fmt:setLocale value="${lang}"/>
-        <%--<fmt:setLocale value="en_EN"/>--%>
-    </c:if>
 
 
-</form>
+<fmt:setLocale value="en_EN"/>
+
 
 <b> <fmt:message key="info" bundle="${messages}"/> </b>
 
