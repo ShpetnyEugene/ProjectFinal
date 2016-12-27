@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/admin-menu/add-train")
+@WebServlet("/admin/trains/add")
 public class AddTrain extends HttpServlet{
 
     @Override

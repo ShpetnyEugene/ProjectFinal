@@ -1,5 +1,6 @@
 package com.gstu.controllers;
 
+import com.gstu.models.Role;
 import com.gstu.models.User;
 import com.gstu.services.RegistrationService;
 import com.gstu.services.UserService;
@@ -22,7 +23,7 @@ public class RegistrationServlet extends HttpServlet {
     private static final String LOGIN = "login";
     private static final String PASSWORD = "password";
     private static final String PATRONYMIC = "patronymic";
-    private static final String PASSPORT_SERIAL = "passportSerial";
+    private static final String IDENTIFICATION_NUMBER = "identificationNumber";
     private static final String BIRTHDAY = "birthday";
 
     private RegistrationService registrationService = new RegistrationService();
@@ -34,7 +35,7 @@ public class RegistrationServlet extends HttpServlet {
         String patronymic = req.getParameter(PATRONYMIC);
         String login = req.getParameter(LOGIN);
         String password = req.getParameter(PASSWORD);
-        String passportSerial = req.getParameter(PASSPORT_SERIAL);
+        String identificationNumber = req.getParameter(IDENTIFICATION_NUMBER);
         //String birthday = req.getParameter(BIRTHDAY);
 
         String errorMessages = "";
@@ -44,7 +45,7 @@ public class RegistrationServlet extends HttpServlet {
 
         if ( StringUtils.isNotBlank(errorMessages)
                 || registrationService.checkUserByLogin(login)
-                        || registrationService.checkUserByPassportSerial(passportSerial)) {
+                        || registrationService.checkUserByIdentificationNumber(identificationNumber)) {
 
             req.setAttribute("error", errorMessages);
 
@@ -54,7 +55,9 @@ public class RegistrationServlet extends HttpServlet {
 
             try {
                 UserService userService = new UserService();
-                userService.addUser(new User(firstName, lastName, patronymic, 20, passportSerial, login, password, 2));
+                userService.addUser(new User(firstName, lastName, patronymic, 20, identificationNumber, login, password, Role.USER));
+                // userService.addUser(new User(firstName, lastName, patronymic, 20, identificationNumber, login, password, Role.USER));
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }

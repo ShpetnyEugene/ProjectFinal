@@ -3,125 +3,124 @@ package com.gstu.models;
 public class User {
 
     private long idUser;
-    private String firsName;
+    private String firstName;
     private String lastName;
     private String patronymic;
     // TODO заменить на private Date date
     private int age;
-    private String passportSerial;
+    private String identificationNumber;
     private String login;
     private String password;
     // TODO заменить на private Role role
-    private int role;
+    private Role role;
 
-    public User(long idUser, String firsName, String lastName, String patronymic, int age, String passportSerial, String login, String password, int role) {
-        this.idUser = idUser;
-        this.firsName = firsName;
-        this.lastName = lastName;
-        this.patronymic = patronymic;
-        this.age = age;
-        this.passportSerial = passportSerial;
-        this.login = login;
-        this.password = password;
-        this.role = role;
-    }
-
-    public User(String firsName, String lastName, String patronymic, int age, String passportSerial, String login, String password, int role) {
-        this.firsName = firsName;
-        this.lastName = lastName;
-        this.patronymic = patronymic;
-        this.age = age;
-        this.passportSerial = passportSerial;
-        this.login = login;
-        this.password = password;
-        this.role = role;
-    }
 
     public User() {
     }
 
-    public void setIdUser(long idUser) {
-        this.idUser = idUser;
-    }
-
-    public void setFirsName(String firsName) {
-        this.firsName = firsName;
-    }
-
-    public void setLastName(String lastName) {
+    public User(String firstName, String lastName, String patronymic, int age, String identificationNumber, String login, String password, Role role) {
+        this.firstName = firstName;
         this.lastName = lastName;
-    }
-
-    public void setPatronymic(String patronymic) {
         this.patronymic = patronymic;
-    }
-
-    public void setAge(int age) {
         this.age = age;
-    }
-
-    public void setPassportSerial(String passportSerial) {
-        this.passportSerial = passportSerial;
-    }
-
-    public void setLogin(String login) {
+        this.identificationNumber = identificationNumber;
         this.login = login;
-    }
-
-    public void setPassword(String password) {
         this.password = password;
-    }
-
-    public void setRole(int role) {
         this.role = role;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-
-    public String getLogin() {
-        return login;
-    }
-
-    public int getRole() {
-        return role;
+    public User(long idUser, String firstName, String lastName, String patronymic, int age, String identificationNumber, String login, String password) {
+        this.idUser = idUser;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.patronymic = patronymic;
+        this.age = age;
+        this.identificationNumber = identificationNumber;
+        this.login = login;
+        this.password = password;
     }
 
     public long getIdUser() {
         return idUser;
     }
 
-    public String getFirsName() {
-        return firsName;
+    public void setIdUser(long idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
     }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getPatronymic() {
         return patronymic;
+    }
+
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
     }
 
     public int getAge() {
         return age;
     }
 
-    public String getPassportSerial() {
-        return passportSerial;
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getIdentificationNumber() {
+        return identificationNumber;
+    }
+
+    public void setIdentificationNumber(String identificationNumber) {
+        this.identificationNumber = identificationNumber;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "idUser=" + idUser +
-                ", firsName='" + firsName + '\'' +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", patronymic='" + patronymic + '\'' +
                 ", age=" + age +
-                ", passportSerial='" + passportSerial + '\'' +
+                ", identificationNumber='" + identificationNumber + '\'' +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +

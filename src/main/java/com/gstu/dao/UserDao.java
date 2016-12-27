@@ -15,7 +15,7 @@ public class UserDao implements CrudDao<User, Long> {
     private static final String DELETE_BY_ID_QUERY = "DELETE FROM user WHERE idUser= ?";
     private static final String SELECT_BY_LOGIN_QUERY = "SELECT * FROM user WHERE login = ?";
     private static final String INSERT_NEW_USER = "INSERT INTO user (firstName,lastName,age,patronymic,passportSerial,login,password,role) VALUES(?,?,?,?,?,?,?,?) ";
-    private static final String SELECT_BY_PASSPORT_SERIAL_QUERY = "SELECT * FROM user WHERE passportSerial = ?";
+    private static final String SELECT_BY_PASSPORT_SERIAL_QUERY = "SELECT * FROM user WHERE identificationNumber = ?";
 
 
 
@@ -28,16 +28,16 @@ public class UserDao implements CrudDao<User, Long> {
 
 
     public int insertUser(User user) {
-        return executor.execUpdate(INSERT_NEW_USER,user.getFirsName(),user.getLastName(),user.getAge(),user.getPatronymic(),
-                user.getPassportSerial(),user.getLogin(),user.getPassword(),user.getRole());
+        return executor.execUpdate(INSERT_NEW_USER,user.getFirstName(),user.getLastName(),user.getAge(),user.getPatronymic(),
+                user.getIdentificationNumber(),user.getLogin(),user.getPassword(),user.getRole());
     }
 
     public User findByLogin(String login){
         return executor.selectOne(SELECT_BY_LOGIN_QUERY,new UserMapper(),login);
     }
 
-    public User findByPassportSerial (String passportSerial){
-        return executor.selectOne(SELECT_BY_PASSPORT_SERIAL_QUERY,new UserMapper(),passportSerial);
+    public User findByIdentificationNumber (String identificationNumber){
+        return executor.selectOne(SELECT_BY_PASSPORT_SERIAL_QUERY,new UserMapper(),identificationNumber);
     }
 
     @Override
@@ -62,6 +62,7 @@ public class UserDao implements CrudDao<User, Long> {
 
     @Override
     public User deleteById(Long aLong) {
-        return executor.selectOne(DELETE_BY_ID_QUERY, new UserMapper(), aLong);
+        executor.execUpdate(DELETE_BY_ID_QUERY,  aLong);
+        return null;
     }
 }

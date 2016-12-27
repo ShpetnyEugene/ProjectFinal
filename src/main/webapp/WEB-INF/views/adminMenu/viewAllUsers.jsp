@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
-<title>Views all train</title>
+<title>Views all users</title>
 
 <t:_layout>
     <jsp:body>
@@ -12,29 +12,39 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>idTrain</th>
-                <th>Name</th>
-                <th>Number free places</th>
+                <th>idUser</th>
+                <th>First Name</th>
+                <th>Last name</th>
+                <th>Patronymic</th>
+                <th>Age</th>
+                <th>Identification Number</th>
+                <th>Login</th>
+                <th>Password</th>
+                <th>Role</th>
                 <th>Delete</th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="train" items="${trains}">
+            <c:forEach var="user" items="${users}">
                 <tr>
-                    <th>${train.idTrain}</th>
-                    <th>${train.name}</th>
-                    <th>${train.numberFreePlaces}</th>
+                    <th>${user.idUser}</th>
+                    <th>${user.firstName}</th>
+                    <th>${user.lastName}</th>
+                    <th>${user.patronymic}</th>
+                    <th>${user.age}</th>
+                    <th>${user.identificationNumber}</th>
+                    <th>${user.login}</th>
+                    <th>${user.password}</th>
+                    <th>${user.role}</th>
                     <th>
                         <form name = "Delete" method="post">
-                            <button type="submit" name = "Delete" value="${train.idTrain}">Delete</button>
+                            <button type="submit" name = "Delete" value="${user.idUser}">Delete</button>
                         </form>
                     </th>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
-
-
 
         <div class="col-xs-offset-5 col-xs-10">
             <div class="col-xs-3">

@@ -1,6 +1,5 @@
 package com.gstu.controllers;
 
-import com.gstu.services.RecordsTrainService;
 import com.gstu.services.TrainService;
 import com.gstu.services.implementations.ServiceFactory;
 import com.gstu.utils.ViewUtils;
@@ -23,22 +22,12 @@ public class HomeServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        User user = (User) request.getAttribute("user");
-//
+        ViewUtils.doView("home",response,request);
 
-//        User user1 = (User) request.getSession().getAttribute("user");
-        request.setAttribute("trains", trainService.allTrains());
-        request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("----------------------------------");
-
-        System.out.println(req.getParameter("Delete"));
-        RecordsTrainService recService = new RecordsTrainService();
-        recService.DeleteTrainById(Long.getLong(req.getParameter("Delete")));
         ViewUtils.doView("home",resp,req);
-
     }
 }

@@ -12,7 +12,7 @@
         <div class="form-horizontal">
             <div class="col-xs-offset-5 col-xs-10">
                 <div class="col-xs-3">
-                    <a href="/admin-menu/add-train" type="button" class="btn btn-lg btn-primary btn-block">Добавить
+                    <a href="${pageContext.request.contextPath}/admin/trains/add" type="button" class="btn btn-lg btn-primary btn-block">Добавить
                         запись</a>
                 </div>
             </div>
@@ -22,7 +22,7 @@
 
             <div class="col-xs-offset-5 col-xs-10">
                 <div class="col-xs-3">
-                    <a href="/admin-menu/views-all-train" type="button" class="btn btn-lg btn-primary btn-block">Показать все поезда
+                    <a href="${pageContext.request.contextPath}/admin/trains" type="button" class="btn btn-lg btn-primary btn-block">Показать все поезда
                     </a>
                 </div>
             </div>

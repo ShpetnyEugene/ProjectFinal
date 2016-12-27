@@ -36,7 +36,7 @@
 
         <div class="col-xs-offset-5 col-xs-10">
             <div class="col-xs-3">
-                <a href="/admin-menu" type="button" class="btn btn-lg btn-primary btn-block">Вернуться в админ меню</a>
+                <a href="${pageContext.request.contextPath}/admin" type="button" class="btn btn-lg btn-primary btn-block">Вернуться в админ меню</a>
             </div>
         </div>
 

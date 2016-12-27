@@ -63,25 +63,36 @@
 
 <c:if test="${not empty user}">
 
-    <div>
-    <fmt:message key="hello" bundle="${messages}"/> ${user.login}, ${user.role}
+
+<div class="container">
+
+    <div style="position: relative; text-align: right;">
 
 
-    <form action="${pageContext.request.contextPath}/logout" method="post">
-        <input type="submit" value="Logout">
-    </form>
-    <c:if test="${user.role == 1}">
-        <a href="${pageContext.request.contextPath}/admin-menu" type="button" class="">
-            <span class="glyphicon glyphicon-lock"></span> Admin menu</a>
+        <div style="float: right;">
+            <fmt:message key="hello" bundle="${messages}"/> ${user.login}, ${user.role}
+
+
+            <c:if test="${user.role == 'ADMIN'}">
+                <a href="${pageContext.request.contextPath}/admin" type="button" class="">
+                    <span class="glyphicon glyphicon-lock"></span> Admin menu</a>
+            </c:if>
+
+            <div>
+                <form action="${pageContext.request.contextPath}/logout" method="post">
+                    <input type="submit" value="Logout">
+                </form>
+            </div>
 
         </div>
+        </c:if>
 
         <br>
-    </c:if>
-</c:if>
+        <br>
 
-<jsp:doBody/>
-<hr style="border-top: 2px solid gray">
+        <jsp:doBody/>
+        <%--<hr style="border-top: 2px solid gray">--%>
+
 
 </body>
 </html>

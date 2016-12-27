@@ -5,6 +5,7 @@ import com.gstu.executor.Executor;
 import com.gstu.models.User;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class UserService {
 
@@ -20,7 +21,15 @@ public class UserService {
         return userDao.findByLogin(login);
     }
 
-    // Работает правильно
+    public List<User> getAllUsers(){
+        return userDao.findAll();
+    }
+
+
+    public void deleteUserById(Long id){
+        userDao.deleteById(id);
+    }
+
     public boolean checkUserPassword(User user, String password) {
         return user.getPassword().equals(password);
     }
@@ -28,7 +37,6 @@ public class UserService {
     public boolean addUser(User user) {
         synchronized (lock) {
             // TODO check in login don't repeat
-
             userDao.insertUser(user);
         }
         return false;

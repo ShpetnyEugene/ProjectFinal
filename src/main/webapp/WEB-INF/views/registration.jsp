@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags/" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 
 <t:_layout>
@@ -58,7 +58,7 @@
             <div class="form-group" style="margin-right: 0">
                 <label class="control-label col-xs-5" for="firstName">Серия паспорта:</label>
                 <div class="col-xs-3">
-                    <input type="text" name="passportSerial" class="form-control" id="postalAddress"
+                    <input type="text" name="identificationNumber" class="form-control" id="postalAddress"
                            placeholder="Введите серию паспорта">
                 </div>
             </div>

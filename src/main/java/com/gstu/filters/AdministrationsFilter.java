@@ -1,6 +1,7 @@
 package com.gstu.filters;
 
 
+import com.gstu.models.Role;
 import com.gstu.models.User;
 
 import javax.servlet.*;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebFilter("/adminMenu/*")
+@WebFilter("/admin/*")
 public class AdministrationsFilter implements Filter {
 
     @Override
@@ -26,7 +27,7 @@ public class AdministrationsFilter implements Filter {
         User user = (User) req.getSession().getAttribute("user");
 
 
-        if(user != null && user.getRole() == 1){
+        if(user != null && user.getRole() == Role.ADMIN){
             filterChain.doFilter(req, resp);
         }else{
             resp.sendRedirect("/booking/stations");

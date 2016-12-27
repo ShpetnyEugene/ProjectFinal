@@ -11,7 +11,7 @@
         <div class="container" >
 
             <form class="form-signin" method="post">
-                <h2 class="form-signin-heading">Please sign in</h2>
+                <h2 class="form-signin-heading" style="text-align: center">Please sign in or register</h2>
                 <label for="inputEmail" class="sr-only">Email address</label>
                 <input type="email" style="width: 100%" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                 <label for="inputPassword" class="sr-only">Password</label>

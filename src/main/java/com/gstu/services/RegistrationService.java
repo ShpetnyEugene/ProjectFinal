@@ -18,7 +18,7 @@ public class RegistrationService {
         return userDao.findByLogin(login) != null;
     }
 
-    public boolean checkUserByPassportSerial (String passportSerial){
+    public boolean checkUserByIdentificationNumber (String identificationNumber){
         UserDao userDao = null;
 
         try {
@@ -26,12 +26,9 @@ public class RegistrationService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        if (userDao.findByPassportSerial(passportSerial) != null){
-            return true;
-        }else {
-            return false;
-        }
+        return userDao.findByIdentificationNumber(identificationNumber) != null;
     }
+
 
 
 }

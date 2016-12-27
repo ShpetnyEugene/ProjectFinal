@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
         import javax.servlet.http.HttpServletResponse;
         import java.io.IOException;
 
-@WebServlet("/admin-menu")
+@WebServlet("/admin")
 public class AdministrationServlet extends HttpServlet {
 
     @Override

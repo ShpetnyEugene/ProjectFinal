@@ -15,7 +15,9 @@ public class RecordsTrainService {
         }
 
 
-        trainDao.deleteById(id);
+        if (trainDao != null) {
+            trainDao.deleteById(id);
+        }
 
     }
 }
