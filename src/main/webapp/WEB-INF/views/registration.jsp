@@ -36,7 +36,7 @@
                 <label class="control-label col-xs-5">Дата рождения:</label>
 
                 <div class="col-xs-3">
-                    <input type="text" name="date" class="form-control" id="datetimepicker">
+                    <input type="text" name="birthDay" class="form-control" id="datetimepicker">
                 </div>
             </div>
 
@@ -56,10 +56,10 @@
 
 
             <div class="form-group" style="margin-right: 0">
-                <label class="control-label col-xs-5" for="firstName">Серия паспорта:</label>
+                <label class="control-label col-xs-5" for="firstName">Иденфикационный номер:</label>
                 <div class="col-xs-3">
                     <input type="text" name="identificationNumber" class="form-control" id="postalAddress"
-                           placeholder="Введите серию паспорта">
+                           placeholder="Введите иденфикационный номер">
                 </div>
             </div>
 

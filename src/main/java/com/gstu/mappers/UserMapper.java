@@ -19,7 +19,7 @@ public class UserMapper implements Mapper<User>{
     private static final String PATRONYMIC = "patronymic";
     private static final String LOGIN = "login";
     private static final String PASSWORD = "password";
-    private static final String AGE = "age";
+    private static final String BIRTHDAY = "birthDay";
     private static final String ROLE = "role";
 
 
@@ -30,7 +30,7 @@ public class UserMapper implements Mapper<User>{
         user.setFirstName(resultSet.getString(FIRST_NAME));
         user.setLastName(resultSet.getString(LAST_NAME));
         user.setPatronymic(resultSet.getString(PATRONYMIC));
-        user.setAge(resultSet.getInt(AGE));
+        user.setBirthDay(resultSet.getDate(BIRTHDAY));
         user.setIdentificationNumber(resultSet.getString(IDENTIFICATION_NUMBER));
         user.setLogin(resultSet.getString(LOGIN));
         user.setPassword(resultSet.getString(PASSWORD));

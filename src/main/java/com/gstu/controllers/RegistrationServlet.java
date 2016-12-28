@@ -13,7 +13,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 @WebServlet("/registration")
 public class RegistrationServlet extends HttpServlet {
@@ -24,7 +27,7 @@ public class RegistrationServlet extends HttpServlet {
     private static final String PASSWORD = "password";
     private static final String PATRONYMIC = "patronymic";
     private static final String IDENTIFICATION_NUMBER = "identificationNumber";
-    private static final String BIRTHDAY = "birthday";
+    private static final String BIRTHDAY = "birthDay";
 
     private RegistrationService registrationService = new RegistrationService();
 
@@ -36,7 +39,29 @@ public class RegistrationServlet extends HttpServlet {
         String login = req.getParameter(LOGIN);
         String password = req.getParameter(PASSWORD);
         String identificationNumber = req.getParameter(IDENTIFICATION_NUMBER);
-        //String birthday = req.getParameter(BIRTHDAY);
+        String birthDay = req.getParameter(BIRTHDAY);
+
+
+        System.out.println(birthDay);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.mm.yyyy");
+
+        System.out.println(birthDay);
+
+        java.util.Date date = null;
+
+        try {
+             date = dateFormat.parse(birthDay);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+        SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println("EXECUTOR : " + date);
+
+
+
+        Date birthdayDate = Date.valueOf(dateFormat1.format(date));
 
         String errorMessages = "";
         if(StringUtils.isBlank(lastName)) {
@@ -55,7 +80,7 @@ public class RegistrationServlet extends HttpServlet {
 
             try {
                 UserService userService = new UserService();
-                userService.addUser(new User(firstName, lastName, patronymic, 20, identificationNumber, login, password, Role.USER));
+                userService.addUser(new User(firstName, lastName, patronymic, birthdayDate, identificationNumber, login, password, Role.USER));
                 // userService.addUser(new User(firstName, lastName, patronymic, 20, identificationNumber, login, password, Role.USER));
 
             } catch (SQLException e) {

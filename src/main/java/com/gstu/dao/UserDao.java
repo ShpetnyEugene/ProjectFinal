@@ -9,35 +9,38 @@ import java.util.List;
 
 public class UserDao implements CrudDao<User, Long> {
 
-
     private static final String SELECT_BY_ID_QUERY = "SELECT * FROM user WHERE idUser = ?";
-    private static final String SELECT_ALL_QUERY = "SELECT * FROM user";
-    private static final String DELETE_BY_ID_QUERY = "DELETE FROM user WHERE idUser= ?";
-    private static final String SELECT_BY_LOGIN_QUERY = "SELECT * FROM user WHERE login = ?";
-    private static final String INSERT_NEW_USER = "INSERT INTO user (firstName,lastName,age,patronymic,passportSerial,login,password,role) VALUES(?,?,?,?,?,?,?,?) ";
-    private static final String SELECT_BY_PASSPORT_SERIAL_QUERY = "SELECT * FROM user WHERE identificationNumber = ?";
 
+    private static final String SELECT_ALL_QUERY = "SELECT * FROM user";
+
+    private static final String DELETE_BY_ID_QUERY = "DELETE FROM user WHERE idUser= ?";
+
+    private static final String SELECT_BY_LOGIN_QUERY = "SELECT * FROM user WHERE login = ?";
+
+    private static final String INSERT_NEW_USER = "INSERT INTO user (firstName,lastName,birthDay,patronymic,passportSerial,login,password,role) VALUES(?,?,?,?,?,?,?,?) ";
+
+    private static final String SELECT_BY_PASSPORT_SERIAL_QUERY = "SELECT * FROM user WHERE identificationNumber = ?";
 
 
     private com.gstu.executor.Executor executor;
     private static Logger log = Logger.getLogger(UserDao.class);
 
-    public UserDao (Executor executor){
+    public UserDao(Executor executor) {
         this.executor = executor;
     }
 
 
     public int insertUser(User user) {
-        return executor.execUpdate(INSERT_NEW_USER,user.getFirstName(),user.getLastName(),user.getAge(),user.getPatronymic(),
-                user.getIdentificationNumber(),user.getLogin(),user.getPassword(),user.getRole());
+        return executor.execUpdate(INSERT_NEW_USER, user.getFirstName(), user.getLastName(), user.getBirthDay(), user.getPatronymic(),
+                user.getIdentificationNumber(), user.getLogin(), user.getPassword(), user.getRole());
     }
 
-    public User findByLogin(String login){
-        return executor.selectOne(SELECT_BY_LOGIN_QUERY,new UserMapper(),login);
+    public User findByLogin(String login) {
+        return executor.selectOne(SELECT_BY_LOGIN_QUERY, new UserMapper(), login);
     }
 
-    public User findByIdentificationNumber (String identificationNumber){
-        return executor.selectOne(SELECT_BY_PASSPORT_SERIAL_QUERY,new UserMapper(),identificationNumber);
+    public User findByIdentificationNumber(String identificationNumber) {
+        return executor.selectOne(SELECT_BY_PASSPORT_SERIAL_QUERY, new UserMapper(), identificationNumber);
     }
 
     @Override
@@ -62,7 +65,7 @@ public class UserDao implements CrudDao<User, Long> {
 
     @Override
     public User deleteById(Long aLong) {
-        executor.execUpdate(DELETE_BY_ID_QUERY,  aLong);
+        executor.execUpdate(DELETE_BY_ID_QUERY, aLong);
         return null;
     }
 }

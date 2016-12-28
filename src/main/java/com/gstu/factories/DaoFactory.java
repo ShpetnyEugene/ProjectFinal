@@ -2,9 +2,7 @@ package com.gstu.factories;
 
 import com.gstu.dao.TrainDao;
 import com.gstu.executor.Executor;
-import com.gstu.services.DataBaseConnection;
-
-import java.sql.SQLException;
+import com.gstu.services.ConnectionFactory;
 
 public class DaoFactory {
 
@@ -16,13 +14,8 @@ public class DaoFactory {
 
     public static TrainDao trainDao() {
 
-        try {
-            Executor executor = new Executor(DataBaseConnection.getInstance().getConnection());
-            return new TrainDao(executor);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
+        Executor executor = new Executor(ConnectionFactory.getConnection());
+        return new TrainDao(executor);
     }
 
 }

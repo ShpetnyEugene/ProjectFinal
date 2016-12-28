@@ -14,7 +14,7 @@ public class UserService {
     private final UserDao userDao;
 
     public UserService() throws SQLException {
-        this.userDao = new UserDao(new Executor(DataBaseConnection.getInstance().getConnection()));
+        this.userDao = new UserDao(new Executor(ConnectionFactory.getConnection()));
     }
 
     public User getUserByLogin(String login) {

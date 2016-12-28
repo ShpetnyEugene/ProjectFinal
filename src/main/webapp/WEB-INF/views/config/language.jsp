@@ -21,18 +21,12 @@
 <%--(${lang})--%>
 
 
-<fmt:setBundle basename="messages" var="messages"/>
 
 <%--<fmt:setBundle basename="com.sample.jsp.tutorial.bundle.myBundle" var="resourceBundle"/>--%>
 <%--bundle="messages"--%>
 
-
-
-
 <fmt:setLocale value="en_EN"/>
 
-
-<b> <fmt:message key="info" bundle="${messages}"/> </b>
 
 
 <%--http://www.wideskills.com/jsp/jsp-internationalization--%>

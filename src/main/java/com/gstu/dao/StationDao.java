@@ -1,7 +1,7 @@
 package com.gstu.dao;
 
 import com.gstu.models.Station;
-import com.gstu.services.DataBaseConnection;
+import com.gstu.services.ConnectionFactory;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
@@ -20,16 +20,8 @@ public class StationDao implements CrudDao<Station, Long> {
 
     @Override
     public Station findById(Long id) throws SQLException {
-        DataBaseConnection dataBaseConnection = null;
-        Station station = null;
-        try {
-            dataBaseConnection = DataBaseConnection.getInstance();
-        } catch (SQLException e) {
-            log.error(e);
-            // FIXME: 11.12.2016 Пустая строка !!!!
-            throw new DataAccessException("", e);
-        }
-        Connection connection = dataBaseConnection.getConnection();
+        Station station;
+        Connection connection = ConnectionFactory.getConnection();
 
         try (PreparedStatement statement = connection.prepareStatement("select * from station WHERE idStation = ?")) {
 
@@ -47,16 +39,8 @@ public class StationDao implements CrudDao<Station, Long> {
 
     @Override
     public List<Station> findAll() {
-        DataBaseConnection dataBaseConnection = null;
         List<Station> stations = new ArrayList<>();
-        try {
-            dataBaseConnection = DataBaseConnection.getInstance();
-        } catch (SQLException e) {
-            log.error(e);
-            // FIXME: 11.12.2016 Пустая строка !!!!
-            throw new DataAccessException("", e);
-        }
-        Connection connection = dataBaseConnection.getConnection();
+        Connection connection = ConnectionFactory.getConnection();
 
         try (PreparedStatement statement = connection.prepareStatement("select * from station")) {
 
@@ -83,16 +67,8 @@ public class StationDao implements CrudDao<Station, Long> {
 
     @Override
     public Station deleteById(Long aLong) {
-        // TODO возвращаемый тип можно же просто void
-        DataBaseConnection dataBaseConnection = null;
-        try {
-            dataBaseConnection = DataBaseConnection.getInstance();
-        } catch (SQLException e) {
-            log.error(e);
-            // FIXME: 11.12.2016
-            throw new DataAccessException("", e);
-        }
-        Connection connection = dataBaseConnection.getConnection();
+
+        Connection connection = ConnectionFactory.getConnection();
         try (PreparedStatement statement = connection.prepareStatement("DELETE FROM station WHERE idStation= ?")) {
 
         } catch (SQLException e) {

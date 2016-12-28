@@ -16,8 +16,6 @@ public enum Role {
                 return role;
             }
         }
-//throw new UnsupportedOperationException();
-
         throw new IllegalArgumentException();
     }
 }

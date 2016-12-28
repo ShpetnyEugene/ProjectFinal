@@ -31,7 +31,7 @@
                     <th>${user.firstName}</th>
                     <th>${user.lastName}</th>
                     <th>${user.patronymic}</th>
-                    <th>${user.age}</th>
+                    <th>${user.birthDay}</th>
                     <th>${user.identificationNumber}</th>
                     <th>${user.login}</th>
                     <th>${user.password}</th>

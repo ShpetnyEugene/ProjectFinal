@@ -72,28 +72,46 @@ public class Executor {
         return value;
     }
 
-    private void setParams(PreparedStatement stmt, Object[] params) throws SQLException {
+    private void setParams(PreparedStatement stmt, Object[] params) {
         if (params != null) {
             for (int i = 0; i < params.length; i++) {
-                setParam(stmt, i+1, params[i]);
+                try {
+                    setParam(stmt, i + 1, params[i]);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    log.error(e);
+                }
             }
         } else {
-            // TODO
 
         }
     }
 
-    private void setParam(PreparedStatement stmt, int i, Object object) throws SQLException {
 
+    private void setParam(PreparedStatement stmt, int i, Object object) throws SQLException {
         Class c = object.getClass();
+
+        System.out.println(object);
         if (object instanceof String) {
             stmt.setString(i, (String) object);
         } else if (object instanceof Integer) {
             stmt.setInt(i, (Integer) object);
-        } else if (object instanceof Long) {
-            stmt.setLong(i, (Long) object);
-        } else {
+        }else if (object instanceof Long) {
+                stmt.setLong(i, (Long) object);
+        }
+        else {
             throw new IllegalArgumentException();
         }
     }
 }
+
+
+
+//             TODO Не получается установить
+//            System.out.println("OBJECT : " + object.getClass());
+//            SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+//            Date birthdayDate = Date.valueOf(dateFormat1.format(object));
+//
+//
+//            System.out.println(object);
+//            stmt.setDate(i, (Date) object);

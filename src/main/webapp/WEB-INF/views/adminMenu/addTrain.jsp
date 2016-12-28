@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags/" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 
 <title>Add Train</title>
@@ -13,14 +13,14 @@
             <div class="form-group">
                 <label class="control-label col-xs-4" for="firstName">Название поезда:</label>
                 <div class="col-xs-4">
-                    <input type="text" name="nameStation" class="form-control" id="firstName"
+                    <input type="text" name="name" class="form-control" id="firstName"
                            placeholder="Введите название поезда">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-xs-4" for="lastName">Количество свободных мест:</label>
                 <div class="col-xs-4">
-                    <input type="text" name="nameStation" class="form-control" id="lastName"
+                    <input type="text" name="numberFreePlaces" class="form-control" id="lastName"
                            placeholder="Введите колличество свободных мест">
                 </div>
             </div>

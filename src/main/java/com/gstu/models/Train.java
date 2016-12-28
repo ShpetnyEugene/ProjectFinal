@@ -7,7 +7,6 @@ package com.gstu.models;
 
 public class Train {
 
-    // TODO конструктор изменить а также getters and setters
     private long idTrain;
     private String name;
     private int numberFreePlaces;
@@ -15,10 +14,13 @@ public class Train {
     public Train() {
     }
 
-    //TODO TOSTRING изменить
-
-    public Train(long idTrain, String name,int numberFreePlaces) {
+    public Train(long idTrain, String name, int numberFreePlaces) {
         this.idTrain = idTrain;
+        this.name = name;
+        this.numberFreePlaces = numberFreePlaces;
+    }
+
+    public Train(String name, int numberFreePlaces) {
         this.name = name;
         this.numberFreePlaces = numberFreePlaces;
     }
@@ -39,6 +41,14 @@ public class Train {
         this.name = name;
     }
 
+    public int getNumberFreePlaces() {
+        return numberFreePlaces;
+    }
+
+    public void setNumberFreePlaces(int numberFreePlaces) {
+        this.numberFreePlaces = numberFreePlaces;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -47,6 +57,7 @@ public class Train {
         Train train = (Train) o;
 
         if (idTrain != train.idTrain) return false;
+        if (numberFreePlaces != train.numberFreePlaces) return false;
         return name != null ? name.equals(train.name) : train.name == null;
 
     }
@@ -55,6 +66,7 @@ public class Train {
     public int hashCode() {
         int result = (int) (idTrain ^ (idTrain >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + numberFreePlaces;
         return result;
     }
 
@@ -63,14 +75,7 @@ public class Train {
         return "Train{" +
                 "idTrain=" + idTrain +
                 ", name='" + name + '\'' +
+                ", numberFreePlaces=" + numberFreePlaces +
                 '}';
-    }
-
-    public int getNumberFreePlaces() {
-        return numberFreePlaces;
-    }
-
-    public void setNumberFreePlaces(int numberFreePlaces) {
-        this.numberFreePlaces = numberFreePlaces;
     }
 }

@@ -30,6 +30,6 @@ public class ViewAllTrain extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RecordsTrainService recService = new RecordsTrainService();
         recService.DeleteTrainById(Long.parseLong(req.getParameter("Delete")));
-        resp.sendRedirect("/admin-menu/views-all-train");
+        resp.sendRedirect("/admin/trains");
     }
 }
