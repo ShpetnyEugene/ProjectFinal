@@ -4,8 +4,8 @@ import com.gstu.dao.DataAccessException;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Date;
+import java.util.*;
 
 public class Executor {
 
@@ -90,16 +90,16 @@ public class Executor {
 
     private void setParam(PreparedStatement stmt, int i, Object object) throws SQLException {
         Class c = object.getClass();
-
-        System.out.println(object);
+        System.out.println(object + " " + i);
         if (object instanceof String) {
             stmt.setString(i, (String) object);
         } else if (object instanceof Integer) {
             stmt.setInt(i, (Integer) object);
         }else if (object instanceof Long) {
                 stmt.setLong(i, (Long) object);
-        }
-        else {
+        }else if (object instanceof java.util.Date){
+            stmt.setDate(i, (Date) object);
+        }else {
             throw new IllegalArgumentException();
         }
     }

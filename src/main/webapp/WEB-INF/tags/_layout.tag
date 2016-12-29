@@ -61,18 +61,13 @@
 
 
 <form method="post" action="${pageContext.request.contextPath}/config/language">
-
     <button type="submit" name="local" value="rus"> Russian</button>
-
     <button type="submit" name="local" value="en">English</button>
-
 </form>
-
 
 
 <fmt:setLocale value="${locale}"/>
 <fmt:setBundle basename="messages" var="messages"/>
-<b> <fmt:message key="info" bundle="${messages}"/> </b>
 
 
 <c:if test="${not empty user}">
@@ -85,7 +80,6 @@
 
         <div style="float: right;">
             <fmt:message key="hello" bundle="${messages}"/> ${user.login}, ${user.role}
-
 
             <c:if test="${user.role == 'ADMIN'}">
                 <a href="${pageContext.request.contextPath}/admin" type="button" class="">
