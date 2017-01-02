@@ -1,7 +1,5 @@
 package com.gstu.controllers;
 
-import com.gstu.services.TrainService;
-import com.gstu.services.implementations.ServiceFactory;
 import com.gstu.utils.ViewUtils;
 
 import javax.servlet.annotation.WebServlet;
@@ -13,16 +11,8 @@ import java.io.IOException;
 @WebServlet("/home")
 public class HomeServlet extends HttpServlet {
 
-    private TrainService trainService;
-
-    @Override
-    public void init() {
-        this.trainService = ServiceFactory.trainService();
-    }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         ViewUtils.doView("home",response,request);
-
     }
 
     @Override

@@ -17,23 +17,41 @@ public class UserService {
         this.userDao = new UserDao(new Executor(ConnectionFactory.getConnection()));
     }
 
+    /**
+     * @param login Получение пользователя с заданным login
+     * @return Ныйденного user если найдем или null если пользователя с заданным login нет
+     * */
     public User getUserByLogin(String login) {
         return userDao.findByLogin(login);
     }
 
+    /**
+     * @return Список всех пользователей
+     *
+     * */
     public List<User> getAllUsers(){
         return userDao.findAll();
     }
 
 
+    /**
+     * @param id Пользователя которого нужно удалить
+     * */
     public void deleteUserById(Long id){
         userDao.deleteById(id);
     }
 
+    /**
+     * @param user Пользователь у которого необоходимо проверить пароль
+     * @param password Пароль который ввел пользовае
+     * */
     public boolean checkUserPassword(User user, String password) {
         return user.getPassword().equals(password);
     }
 
+    /**
+     * @param user Пользователя которого нужно добавить в БД
+     * */
     public boolean addUser(User user) {
         synchronized (lock) {
             // TODO check in login don't repeat

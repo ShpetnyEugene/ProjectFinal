@@ -1,33 +1,39 @@
 package com.gstu.controllers;
 
 
+import com.gstu.utils.ViewUtils;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 
-@WebServlet("/booking/ViewsAllStation")
-public class ViesStationsServlet extends HttpServlet {
+@WebServlet("/order-tickets")
+public class OrderTicketsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
-            Print(req,resp);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    protected void Print(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
-        req.getRequestDispatcher("/WEB-INF/views/booking/ViewsAllStation.jsp").forward(req, resp);
+        ViewUtils.doView("/booking/orderTickets",resp,req);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String date = req.getParameter("arrivalDate");
+
+        String stationStart = req.getParameter("stationArrival");
+        String stationEnd = req.getParameter("stationEnd");
+        String dateStart = req.getParameter("date");
+
+        System.out.println(stationStart);
+        System.out.println(stationEnd);
+        System.out.println(dateStart);
+
+
+
+
+        ViewUtils.doView("/booking/orderTickets",resp,req);
+
 
     }
 }

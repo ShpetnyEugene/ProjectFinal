@@ -1,5 +1,6 @@
 package com.gstu.dao;
 
+import com.gstu.executor.Executor;
 import com.gstu.models.Station;
 import com.gstu.services.ConnectionFactory;
 import org.apache.log4j.Logger;
@@ -14,27 +15,18 @@ import java.util.List;
 public class StationDao implements CrudDao<Station, Long> {
 
     private static Logger log = Logger.getLogger(Station.class);
+
     private static final String ID_STATION = "idStation";
     private static final String NAME = "name";
 
 
+    private static final String SELECT_BY_ID = "SELECT * FROM station WHERE idStation = ?";
+
+    private Executor executor = new Executor(ConnectionFactory.getConnection());
     @Override
     public Station findById(Long id) throws SQLException {
-        Station station;
-        Connection connection = ConnectionFactory.getConnection();
-
-        try (PreparedStatement statement = connection.prepareStatement("select * from station WHERE idStation = ?")) {
-
-            //statement.setLong(1, id);
-
-            ResultSet resultSet = statement.executeQuery();
-            resultSet.next();
-            station = new Station(resultSet.getLong(ID_STATION), resultSet.getString(NAME));
-        } catch (SQLException e) {
-            log.error(e);
-            throw new DataAccessException("Station with id not found " + id, e);
-        }
-        return station;
+        //executor.selectOne(SELECT_BY_ID,)
+        return null;
     }
 
     @Override

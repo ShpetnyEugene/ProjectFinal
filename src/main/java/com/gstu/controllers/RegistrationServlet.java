@@ -42,41 +42,41 @@ public class RegistrationServlet extends HttpServlet {
         String birthDay = req.getParameter(BIRTHDAY);
 
 
-        System.out.println(birthDay);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.mm.yyyy");
-
-        System.out.println(birthDay);
-
-        java.util.Date date = null;
-
-        try {
-             date = dateFormat.parse(birthDay);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-
-        SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.println("EXECUTOR : " + date);
-
-
-
-        Date birthdayDate = Date.valueOf(dateFormat1.format(date));
-
         String errorMessages = "";
-        if(StringUtils.isBlank(lastName)) {
-            errorMessages += "last name is empty ";
-        }
 
-        if ( StringUtils.isNotBlank(errorMessages)
+        String locale = String.valueOf((req.getSession().getAttribute("locale")));
+
+        if ((StringUtils.isBlank(lastName)
+                || StringUtils.isBlank(firstName) || StringUtils.isBlank(patronymic)
+                || StringUtils.isBlank(password) || StringUtils.isBlank(login)
+                || StringUtils.isBlank(birthDay) || StringUtils.isBlank(identificationNumber)))
+            if (locale.equals("ru_RU")) {
+                errorMessages += "Все поля обязательно должны быть заполнены !";
+            } else {
+                errorMessages += "All fields must be filled!";
+            }
+
+
+        if (StringUtils.isNotBlank(errorMessages)
                 || registrationService.checkUserByLogin(login)
-                        || registrationService.checkUserByIdentificationNumber(identificationNumber)) {
+                || registrationService.checkUserByIdentificationNumber(identificationNumber)) {
 
             req.setAttribute("error", errorMessages);
 
             ViewUtils.doView("registration", resp, req);
         } else {
             resp.sendRedirect("/login");
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd.mm.yyyy");
+            java.util.Date date = null;
+            try {
+                date = dateFormat.parse(birthDay);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+            Date birthdayDate = Date.valueOf(dateFormat1.format(date));
+
 
             try {
                 UserService userService = new UserService();

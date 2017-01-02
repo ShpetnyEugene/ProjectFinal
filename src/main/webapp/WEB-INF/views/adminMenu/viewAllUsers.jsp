@@ -9,19 +9,22 @@
 <t:_layout>
     <jsp:body>
 
+        <fmt:setLocale value="${locale}"/>
+        <fmt:setBundle basename="messages" var="messages"/>
+
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>idUser</th>
-                <th>First Name</th>
-                <th>Last name</th>
-                <th>Patronymic</th>
-                <th>Age</th>
-                <th>Identification Number</th>
-                <th>Login</th>
-                <th>Password</th>
-                <th>Role</th>
-                <th>Delete</th>
+                <th><fmt:message key="id" bundle="${messages}"/></th>
+                <th><fmt:message key="firstName" bundle="${messages}"/></th>
+                <th><fmt:message key="lastName" bundle="${messages}"/></th>
+                <th><fmt:message key="patronymic" bundle="${messages}"/></th>
+                <th><fmt:message key="birthDay" bundle="${messages}"/></th>
+                <th><fmt:message key="identificationNumber" bundle="${messages}"/></th>
+                <th><fmt:message key="emailAdress" bundle="${messages}"/></th>
+                <th><fmt:message key="password" bundle="${messages}"/></th>
+                <th><fmt:message key="role" bundle="${messages}"/></th>
+                <th><fmt:message key="delete" bundle="${messages}"/></th>
             </tr>
             </thead>
             <tbody>
@@ -38,7 +41,7 @@
                     <th>${user.role}</th>
                     <th>
                         <form name = "Delete" method="post">
-                            <button type="submit" name = "Delete" value="${user.idUser}">Delete</button>
+                            <button type="submit" name = "Delete" value="${user.idUser}"><fmt:message key="delete" bundle="${messages}"/></button>
                         </form>
                     </th>
                 </tr>
@@ -46,9 +49,9 @@
             </tbody>
         </table>
 
-        <div class="col-xs-offset-5 col-xs-10">
+        <div class="col-xs-offset-4 col-xs-9">
             <div class="col-xs-3">
-                <a href="${pageContext.request.contextPath}/admin" type="button" class="btn btn-lg btn-primary btn-block">Вернуться в админ меню</a>
+                <a href="${pageContext.request.contextPath}/admin" style="width: 170%" type="button" class="btn btn-lg btn-primary btn-block"><fmt:message key="backToAdminMenu" bundle="${messages}"/></a>
             </div>
         </div>
 

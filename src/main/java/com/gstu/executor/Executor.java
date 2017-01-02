@@ -1,6 +1,7 @@
 package com.gstu.executor;
 
 import com.gstu.dao.DataAccessException;
+import com.gstu.models.Role;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -22,6 +23,7 @@ public class Executor {
             setParams(stmt, params);
             return stmt.executeUpdate();
         } catch (SQLException e) {
+            log.error(e);
             throw new DataAccessException(e);
         }
     }
@@ -41,6 +43,7 @@ public class Executor {
             }
 
         } catch (SQLException e) {
+            log.error(e);
             throw new DataAccessException(e);
         }
     }
@@ -83,35 +86,28 @@ public class Executor {
                 }
             }
         } else {
-
+            throw new IllegalArgumentException();
         }
     }
 
 
     private void setParam(PreparedStatement stmt, int i, Object object) throws SQLException {
         Class c = object.getClass();
-        System.out.println(object + " " + i);
+        System.out.println(object);
+        System.out.println(object instanceof Date);
         if (object instanceof String) {
             stmt.setString(i, (String) object);
         } else if (object instanceof Integer) {
             stmt.setInt(i, (Integer) object);
         }else if (object instanceof Long) {
                 stmt.setLong(i, (Long) object);
-        }else if (object instanceof java.util.Date){
+        }else if (object instanceof Date){
             stmt.setDate(i, (Date) object);
-        }else {
+        }else if (object instanceof Role){
+            stmt.setInt(i,2);
+        }
+        else {
             throw new IllegalArgumentException();
         }
     }
 }
-
-
-
-//             TODO Не получается установить
-//            System.out.println("OBJECT : " + object.getClass());
-//            SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
-//            Date birthdayDate = Date.valueOf(dateFormat1.format(object));
-//
-//
-//            System.out.println(object);
-//            stmt.setDate(i, (Date) object);

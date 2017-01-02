@@ -9,13 +9,17 @@
 <t:_layout>
     <jsp:body>
 
+        <fmt:setLocale value="${locale}"/>
+        <fmt:setBundle basename="messages" var="messages"/>
+
+
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>idTrain</th>
-                <th>Name</th>
-                <th>Number free places</th>
-                <th>Delete</th>
+                <th style="width: 10%"><fmt:message key="id" bundle="${messages}"/></th>
+                <th style="width: 25%"><fmt:message key="nameTrain" bundle="${messages}"/></th>
+                <th style="width: 25%"><fmt:message key="numberFreePlaces" bundle="${messages}"/></th>
+                <th style="width: 25%"><fmt:message key="delete" bundle="${messages}"/></th>
             </tr>
             </thead>
             <tbody>
@@ -23,10 +27,10 @@
                 <tr>
                     <th>${train.idTrain}</th>
                     <th>${train.name}</th>
-                    <th>${train.numberFreePlaces}</th>
+                    <th style="width: 25%">${train.numberFreePlaces}</th>
                     <th>
                         <form name = "Delete" method="post">
-                            <button type="submit" name = "Delete" value="${train.idTrain}">Delete</button>
+                            <button type="submit" name = "Delete" value="${train.idTrain}"><fmt:message key="delete" bundle="${messages}"/></button>
                         </form>
                     </th>
                 </tr>
@@ -34,11 +38,9 @@
             </tbody>
         </table>
 
-
-
-        <div class="col-xs-offset-5 col-xs-10">
+        <div class="col-xs-offset-4 col-xs-9">
             <div class="col-xs-3">
-                <a href="${pageContext.request.contextPath}/admin" type="button" class="btn btn-lg btn-primary btn-block">Вернуться в админ меню</a>
+                <a href="${pageContext.request.contextPath}/admin" style="width: 170%" type="button" class="btn btn-lg btn-primary btn-block"><fmt:message key="backToAdminMenu" bundle="${messages}"/></a>
             </div>
         </div>
 
