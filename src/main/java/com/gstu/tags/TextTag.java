@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-@SuppressWarnings("serial")
 public class TextTag extends TagSupport {
     private static Logger log = Logger.getLogger(TextTag.class);
     private String value;

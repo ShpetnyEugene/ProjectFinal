@@ -75,12 +75,13 @@ public class RegistrationServlet extends HttpServlet {
         Date birthdayDate = Date.valueOf(dateFormat1.format(date));
 
 
+
         if (!userService.addUser(new User(firstName, lastName, patronymic, birthdayDate, identificationNumber, login, password, Role.USER))) {
             errorMessages = "1";
             req.setAttribute("error", errorMessages);
             ViewUtils.doView("registration", resp, req);
         } else {
-
+            log.info("Registers new User");
             resp.sendRedirect("/login");
         }
     }

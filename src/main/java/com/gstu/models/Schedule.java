@@ -13,16 +13,21 @@ public class Schedule {
     private Date arrivalTime;
     private Date departureTime;
     private int price;
+    private long train_idTrain;
     private long stationStartId;
     private long stationEndId;
 
-    public Schedule(long scheduleId, Date arrivalTime, Date departureTime, int price, long stationStartId, long stationEndId) {
+    public Schedule(long scheduleId, Date arrivalTime, Date departureTime, int price, long train_idTrain, long stationStartId, long stationEndId) {
         this.scheduleId = scheduleId;
         this.arrivalTime = arrivalTime;
         this.departureTime = departureTime;
         this.price = price;
+        this.train_idTrain = train_idTrain;
         this.stationStartId = stationStartId;
         this.stationEndId = stationEndId;
+    }
+
+    public Schedule() {
     }
 
     public long getScheduleId() {
@@ -57,6 +62,14 @@ public class Schedule {
         this.price = price;
     }
 
+    public long getTrain_idTrain() {
+        return train_idTrain;
+    }
+
+    public void setTrain_idTrain(long train_idTrain) {
+        this.train_idTrain = train_idTrain;
+    }
+
     public long getStationStartId() {
         return stationStartId;
     }
@@ -82,6 +95,7 @@ public class Schedule {
 
         if (scheduleId != schedule.scheduleId) return false;
         if (price != schedule.price) return false;
+        if (train_idTrain != schedule.train_idTrain) return false;
         if (stationStartId != schedule.stationStartId) return false;
         if (stationEndId != schedule.stationEndId) return false;
         if (arrivalTime != null ? !arrivalTime.equals(schedule.arrivalTime) : schedule.arrivalTime != null)
@@ -96,6 +110,7 @@ public class Schedule {
         result = 31 * result + (arrivalTime != null ? arrivalTime.hashCode() : 0);
         result = 31 * result + (departureTime != null ? departureTime.hashCode() : 0);
         result = 31 * result + price;
+        result = 31 * result + (int) (train_idTrain ^ (train_idTrain >>> 32));
         result = 31 * result + (int) (stationStartId ^ (stationStartId >>> 32));
         result = 31 * result + (int) (stationEndId ^ (stationEndId >>> 32));
         return result;
@@ -108,8 +123,10 @@ public class Schedule {
                 ", arrivalTime=" + arrivalTime +
                 ", departureTime=" + departureTime +
                 ", price=" + price +
+                ", train_idTrain=" + train_idTrain +
                 ", stationStartId=" + stationStartId +
                 ", stationEndId=" + stationEndId +
                 '}';
     }
 }
+

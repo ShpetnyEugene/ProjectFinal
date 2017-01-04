@@ -20,13 +20,20 @@ public class StationDao implements CrudDao<Station, Long> {
 
     private static final String DELETE_BY_ID = "DELETE FROM station WHERE idStation = ?";
 
-    private static final String SELECT_ID_BY_NAME = "SELECT idStation FROM station";
+    private static final String SELECT_ID_BY_NAME = "SELECT * FROM station WHERE name = ?  ";
+
+    private static final String SELECT_ID_BY_NAME_RU = "SELECT * FROM station WHERE name_ru = ?";
+
 
     private Executor executor = new Executor(ConnectionFactory.getConnection());
 
 
-    public int findIdByName(String name){
-        return 0;
+    public Station findIdByName(String name){
+        return executor.selectOne(SELECT_ID_BY_NAME,new StationMapper(),name);
+    }
+
+    public Station findIdByNameRu(String name){
+        return executor.selectOne(SELECT_ID_BY_NAME_RU,new StationMapper(),name);
     }
 
     @Override
@@ -53,7 +60,6 @@ public class StationDao implements CrudDao<Station, Long> {
 
     @Override
     public void deleteById(Long aLong) {
-
         executor.execUpdate(DELETE_BY_ID,aLong);
     }
 }

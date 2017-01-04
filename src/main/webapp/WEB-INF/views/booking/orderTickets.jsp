@@ -1,3 +1,5 @@
+<%--suppress ALL --%>
+<%--suppress ALL --%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
@@ -8,19 +10,24 @@
 <t:_layout>
     <jsp:body>
 
+
+        <fmt:setLocale value="${locale}"/>
+        <fmt:setBundle basename="messages" var="messages"/>
+
+
         <br>
         <form class="form-horizontal" method="post">
             <div class="form-group">
-                <label class="control-label col-xs-5"  for="stationArrival">Станция отправления:</label>
+                <label class="control-label col-xs-5" for="stationArrival">Станция отправления:</label>
                 <div class="col-xs-3">
                     <input type="text" name="stationArrival" class="form-control" id="stationArrival"
                            placeholder="Введите станцию отправления">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-xs-5" for="firstName">Станция прибытия:</label>
+                <label class="control-label col-xs-5" for="stationEnd">Станция прибытия:</label>
                 <div class="col-xs-3">
-                    <input type="text" class="form-control" name="stationEnd" id="firstName"
+                    <input type="text" class="form-control" name="stationEnd" id="stationEnd"
                            placeholder="Введите станцию прибытия">
                 </div>
             </div>
@@ -33,17 +40,19 @@
                 </div>
             </div>
             <div class="form-signin">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
+
+                    <button class="btn btn-lg btn-primary btn-block" type="submit"><a href="${pageContext.request.contextPath}/order-tickets/reservation" type="button">Search</a></button>
+
+
             </div>
         </form>
-
 
 
         <script type="text/javascript">
 
             var options = {
-
                 url: "http://localhost:8080/suggest/station",
+
 
                 getValue: "name",
 
@@ -52,11 +61,10 @@
                         enabled: true
                     }
                 },
-
                 theme: "square"
             };
 
-            $("#stationArrival").easyAutocomplete(options);
+            $("#stationArrival,#stationEnd").easyAutocomplete(options);
 
 
             $(function () {

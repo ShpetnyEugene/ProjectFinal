@@ -17,26 +17,12 @@ public class SuggestionServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         List<Station> stations;
-
         StationDao stationDao = new StationDao();
         stations = stationDao.findAll();
-
-//        List<String> result = stations
-//                .stream()
-//                .map(Station::getName)
-//                .collect(Collectors.toList());
-
-//        List<String> result = stations
-////                .stream()
-////                .map(Station::getName)
-////                .collect(Collectors.toList());
-//
-
         Gson gson = new Gson();
+        resp.setContentType("text/html; charset=UTF-8");
         String json = gson.toJson(stations);
-
         resp.getWriter().print(json);
     }
 }

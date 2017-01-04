@@ -93,8 +93,9 @@ public class Executor {
 
     private void setParam(PreparedStatement stmt, int i, Object object) throws SQLException {
         Class c = object.getClass();
+        System.out.println("---------------------");
         System.out.println(object);
-        System.out.println(object instanceof Date);
+
         if (object instanceof String) {
             stmt.setString(i, (String) object);
         } else if (object instanceof Integer) {
@@ -105,8 +106,7 @@ public class Executor {
             stmt.setDate(i, (Date) object);
         }else if (object instanceof Role){
             stmt.setInt(i,2);
-        }
-        else {
+        }else {
             throw new IllegalArgumentException();
         }
     }
