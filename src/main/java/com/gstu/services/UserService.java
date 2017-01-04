@@ -4,59 +4,81 @@ import com.gstu.dao.UserDao;
 import com.gstu.executor.Executor;
 import com.gstu.models.User;
 
-import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * @author Shpetny Eugene
+ * @version 1.0
+ * */
 public class UserService {
 
+    // Variable on which is synchronized
     private final static Object lock = new Object();
 
     private final UserDao userDao;
 
-    public UserService() throws SQLException {
+    public UserService() {
         this.userDao = new UserDao(new Executor(ConnectionFactory.getConnection()));
     }
 
+    private RegistrationService registrationService = new RegistrationService();
+
     /**
-     * @param login Получение пользователя с заданным login
-     * @return Ныйденного user если найдем или null если пользователя с заданным login нет
-     * */
+     * Find user by login.
+     * Find user in database if user not found return null.
+     *
+     * @param login Users who need to get
+     * @return if the user find or null if the user with the specified login no
+     */
     public User getUserByLogin(String login) {
         return userDao.findByLogin(login);
     }
 
     /**
-     * @return Список всех пользователей
+     * Find all users
+     * Find users in database if users not found returns null
      *
-     * */
-    public List<User> getAllUsers(){
+     * @return a list of users
+     */
+    public List<User> getAllUsers() {
         return userDao.findAll();
     }
 
 
     /**
-     * @param id Пользователя которого нужно удалить
-     * */
-    public void deleteUserById(Long id){
+     * Delete user by id
+     *
+     * @param id - id of the user you want to remove
+     */
+    public void deleteUserById(Long id) {
         userDao.deleteById(id);
     }
 
     /**
-     * @param user Пользователь у которого необоходимо проверить пароль
-     * @param password Пароль который ввел пользовае
-     * */
+     * The method checked the password for this user
+     *
+     * @param user     - Users who need to verify your password
+     * @param password - The password entered by the user
+     */
     public boolean checkUserPassword(User user, String password) {
         return user.getPassword().equals(password);
     }
 
     /**
-     * @param user Пользователя которого нужно добавить в БД
-     * */
+     * This method for adding a new user to the database
+     *
+     * @param user -  User you want to add to the database
+     * @return false if  registration is not possible, and true if user added to database
+     */
     public boolean addUser(User user) {
         synchronized (lock) {
-            // TODO check in login don't repeat
-            userDao.insertUser(user);
+            if (registrationService.checkUserByIdentificationNumber(user.getIdentificationNumber())
+                    || registrationService.checkUserByLogin(user.getLogin())) {
+                return false;
+            } else {
+                userDao.insertUser(user);
+                return true;
+            }
         }
-        return false;
     }
 }

@@ -12,8 +12,7 @@ public class RegistrationService {
     }
 
     public boolean checkUserByIdentificationNumber(String identificationNumber) {
-        UserDao userDao;
-        userDao = new UserDao(new Executor(ConnectionFactory.getConnection()));
+        UserDao userDao = new UserDao(new Executor(ConnectionFactory.getConnection()));
         return userDao.findByIdentificationNumber(identificationNumber) != null;
     }
 }

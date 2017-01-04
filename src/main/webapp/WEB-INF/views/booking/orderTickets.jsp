@@ -11,9 +11,9 @@
         <br>
         <form class="form-horizontal" method="post">
             <div class="form-group">
-                <label class="control-label col-xs-5" for="lastName">Станция отправления:</label>
+                <label class="control-label col-xs-5"  for="stationArrival">Станция отправления:</label>
                 <div class="col-xs-3">
-                    <input type="text" name="stationArrival" class="form-control" id="lastName"
+                    <input type="text" name="stationArrival" class="form-control" id="stationArrival"
                            placeholder="Введите станцию отправления">
                 </div>
             </div>
@@ -38,7 +38,27 @@
         </form>
 
 
+
         <script type="text/javascript">
+
+            var options = {
+
+                url: "http://localhost:8080/suggest/station",
+
+                getValue: "name",
+
+                list: {
+                    match: {
+                        enabled: true
+                    }
+                },
+
+                theme: "square"
+            };
+
+            $("#stationArrival").easyAutocomplete(options);
+
+
             $(function () {
                 $('#datetimepicker').datetimepicker(
                         {pickTime: false, language: 'ru'}

@@ -30,19 +30,32 @@ public class UserDao implements CrudDao<User, Long> {
     }
 
     /**
-     *@param user
-     * */
+     * Adding a new user to the database
+     *
+     * @param user - are added to the database
+     * @return The value of an int type, which indicates the number of rows processed, or 0 for data definition language statements.
+     */
     public int insertUser(User user) {
         return executor.execUpdate(INSERT_NEW_USER, user.getFirstName(), user.getLastName(), user.getBirthDay(), user.getPatronymic(),
                 user.getIdentificationNumber(), user.getLogin(), user.getPassword(), user.getRole());
     }
 
+    /**
+     * Find user by login.
+     * Find user in database if user not found return null.
+     *
+     * @param login Users who need to find
+     * @return User with the given login
+     */
     public User findByLogin(String login) {
         return executor.selectOne(SELECT_BY_LOGIN_QUERY, new UserMapper(), login);
     }
 
 
     /**
+     * Find user by identification Number.
+     * Find user in database if user not found return null.
+     *
      * @param identificationNumber Users who need to find
      * @return User with the given identificationNumber
      */
@@ -51,6 +64,9 @@ public class UserDao implements CrudDao<User, Long> {
     }
 
     /**
+     * Find user by id.
+     * Find user in database if user not found return null.
+     *
      * @param id Users who need to find
      * @return User with the given id
      */
@@ -60,6 +76,9 @@ public class UserDao implements CrudDao<User, Long> {
     }
 
     /**
+     * Find all users
+     * Find users in database if users not found returns null
+     *
      * @return a list of users
      */
     @Override
@@ -67,26 +86,35 @@ public class UserDao implements CrudDao<User, Long> {
         return executor.selectList(SELECT_ALL_QUERY, new UserMapper());
     }
 
-
+    /**
+     * The method is not supported
+     *
+     * @throws UnsupportedOperationException, when calling
+     */
     @Override
     public User update(User entity) {
+        log.error(new UnsupportedOperationException());
         throw new UnsupportedOperationException();
     }
 
     /**
-     * @throws
-     * */
+     * The method is not supported
+     *
+     * @throws UnsupportedOperationException, when calling
+     */
     @Override
     public User save(User entity) {
+        log.error(new UnsupportedOperationException());
         throw new UnsupportedOperationException();
     }
 
     /**
+     * Delete user by id
+     *
      * @param aLong - id of the user you want to remove
      */
     @Override
-    public User deleteById(Long aLong) {
+    public void deleteById(Long aLong) {
         executor.execUpdate(DELETE_BY_ID_QUERY, aLong);
-        return null;
     }
 }

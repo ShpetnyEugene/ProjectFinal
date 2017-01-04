@@ -2,6 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="tag" uri="http://java.sun.com/jsp/jstl"%>
 
 <title>Login</title>
 
@@ -10,6 +11,8 @@
 
         <fmt:setLocale value="${locale}"/>
         <fmt:setBundle basename="messages" var="messages"/>
+
+        <tag:text value="login"></tag:text>
 
         <title><fmt:message key="login" bundle="${messages}"/></title>
 

@@ -8,5 +8,5 @@ public interface CrudDao<T, TKey> {
     List<T> findAll();
     T update(T entity);
     T save(T entity);
-    T deleteById(TKey key);
+    void deleteById(TKey key);
 }

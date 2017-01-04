@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -19,15 +18,12 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        try {
-            service = new UserService();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        service = new UserService();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ViewUtils.doView("login",response,request);
+        ViewUtils.doView("login", response, request);
+        System.out.println(request.getLocale());
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,11 +32,12 @@ public class LoginServlet extends HttpServlet {
 
         User user = service.getUserByLogin(email);
 
-        if (user != null && service.checkUserPassword(user,password)){
-            request.getSession().setAttribute("user", user );
+
+        if (user != null && service.checkUserPassword(user, password)) {
+            request.getSession().setAttribute("user", user);
             response.sendRedirect("/home");
-        }else {
-            ViewUtils.doView("login",response,request);
+        } else {
+            ViewUtils.doView("login", response, request);
         }
     }
 }

@@ -55,6 +55,42 @@
 
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
+    <%--Easy Money--%>
+
+    <script src="${pageContext.request.contextPath}/resources/bootstrap/js/jquery.easy-autocomplete.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/bootstrap/js/jquery.easy-autocomplete.min.js"></script>
+
+    <link href="${pageContext.request.contextPath}/resources/bootstrap/css/easy-autocomplete.css.map"
+          rel="stylesheet">
+
+    <link href="${pageContext.request.contextPath}/resources/bootstrap/css/easy-autocomplete.css"
+          rel="stylesheet">
+
+
+    <link href="${pageContext.request.contextPath}/resources/bootstrap/css/easy-autocomplete.min.css"
+          rel="stylesheet">
+
+
+    <link href="${pageContext.request.contextPath}/resources/bootstrap/css/easy-autocomplete.min.css.map"
+          rel="stylesheet">
+
+
+    <link href="${pageContext.request.contextPath}/resources/bootstrap/css/easy-autocomplete.themes.css"
+          rel="stylesheet">
+
+
+    <link href="${pageContext.request.contextPath}/resources/bootstrap/css/easy-autocomplete.themes.css.map"
+          rel="stylesheet">
+
+
+    <link href="${pageContext.request.contextPath}/resources/bootstrap/css/easy-autocomplete.themes.min.css"
+          rel="stylesheet">
+
+    <link href="${pageContext.request.contextPath}/resources/bootstrap/css/easy-autocomplete.themes.min.css.map"
+          rel="stylesheet">
+    <%-- --%>
+
+
 </head>
 
 <body>

@@ -29,6 +29,9 @@ public class OrderTicketsServlet extends HttpServlet {
         System.out.println(stationEnd);
         System.out.println(dateStart);
 
+        // по названию станций я найду все id, потом пробегу и найду,все расписание прибытие поездов с
+        // чтобы id начальной станции равноляось id станции переменная направления равна 1
+
 
 
 

@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * @author Shpetny Eugene
  * @version 1.0
- * */
+ */
 
 public class ViewUtils {
 
@@ -19,14 +19,17 @@ public class ViewUtils {
 
     private static Logger log = Logger.getLogger(ViewUtils.class);
 
-    // TODO
+
+
     /**
-     * @param viewName Имя отображаемой страницы относительно views
-     * @exception
-     * */
-    public static void doView(String viewName,HttpServletResponse response,HttpServletRequest request) {
+     * This method displays specified page
+     *
+     * @param viewName - Name displayed page views relative to the directory
+     * @throws IllegalArgumentException - if page not found
+     */
+    public static void doView(String viewName, HttpServletResponse response, HttpServletRequest request) {
         try {
-            request.getRequestDispatcher(PREFIX + viewName + SUFFIX).forward(request,response);
+            request.getRequestDispatcher(PREFIX + viewName + SUFFIX).forward(request, response);
         } catch (ServletException | IOException e) {
             log.error(e);
             throw new IllegalArgumentException(e);

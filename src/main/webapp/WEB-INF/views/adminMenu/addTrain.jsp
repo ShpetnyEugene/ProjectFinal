@@ -31,23 +31,27 @@
             </div>
 
             <div class="form-group">
-                <div class="col-xs-offset-4 col-xs-9">
+                    <%--<div class="col-xs-offset-4 col-xs-9">--%>
+                <div class="col-xs-8">
                     <input type="submit" class="btn btn-primary"
                            value="<fmt:message key="addRecords" bundle="${messages}"/>">
                     <input type="reset" class="btn btn-default"
                            value="<fmt:message key="clearForm" bundle="${messages}"/>">
                 </div>
             </div>
+
+            <br>
+            <br>
+            <div class="col-xs-offset-4 col-xs-7">
+                <div class="col-xs-4">
+                    <a href="${pageContext.request.contextPath}/admin" style="width: 170%" type="button"
+                       class="btn btn-lg btn-primary btn-block"><fmt:message key="backToAdminMenu"
+                                                                             bundle="${messages}"/></a>
+                </div>
+            </div>
+
         </form>
 
-
-        <div class="col-xs-offset-4 col-xs-9">
-            <div class="col-xs-3">
-                <a href="${pageContext.request.contextPath}/admin" style="width: 170%" type="button"
-                   class="btn btn-lg btn-primary btn-block"><fmt:message key="backToAdminMenu"
-                                                                         bundle="${messages}"/></a>
-            </div>
-        </div>
 
     </jsp:body>
 </t:_layout>

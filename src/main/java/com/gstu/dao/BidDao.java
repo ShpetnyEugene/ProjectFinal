@@ -31,7 +31,7 @@ public class BidDao implements CrudDao<Bid,Long> {
     }
 
     @Override
-    public Bid deleteById(Long aLong)  {
-        return null;
+    public void deleteById(Long aLong)  {
+
     }
 }
