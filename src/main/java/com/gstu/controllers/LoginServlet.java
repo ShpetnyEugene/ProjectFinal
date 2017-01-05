@@ -2,6 +2,7 @@ package com.gstu.controllers;
 
 import com.gstu.models.User;
 import com.gstu.services.UserService;
+import com.gstu.services.implementations.ServiceFactory;
 import com.gstu.utils.ViewUtils;
 import org.apache.log4j.Logger;
 
@@ -19,7 +20,7 @@ public class LoginServlet extends HttpServlet {
     private Logger log = Logger.getLogger(LoginServlet.class);
     @Override
     public void init() throws ServletException {
-        service = new UserService();
+        service = ServiceFactory.userService();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

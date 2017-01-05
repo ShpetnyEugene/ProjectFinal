@@ -8,13 +8,10 @@
     <jsp:body>
         <fmt:setLocale value="${locale}"/>
         <fmt:setBundle basename="messages" var="messages"/>
-
-
-        <h1 class="text-center"><fmt:message key="homeHello" bundle="${messages}"/></h1>
-
-        <div class="col-md-2 col-md-offset-5">
-            <a href="${pageContext.request.contextPath}/order-tickets" type="button"
-               class="btn btn-lg btn-primary btn-block"><fmt:message key="makeOrder" bundle="${messages}"/></a>
+        <div class="page-header">
+            <h1>Главная страница</h1>
+            <p class="lead"><fmt:message key="homeHello" bundle="${messages}"/></p>
         </div>
+
     </jsp:body>
 </t:_layout>

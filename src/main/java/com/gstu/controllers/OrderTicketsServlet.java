@@ -3,7 +3,7 @@ package com.gstu.controllers;
 
 import com.gstu.models.Schedule;
 import com.gstu.services.OrderTicketsService;
-import com.gstu.services.Reservation;
+import com.gstu.services.ReservationService;
 import com.gstu.services.TrainServices;
 import com.gstu.utils.DateUtils;
 import com.gstu.utils.ViewUtils;
@@ -21,7 +21,7 @@ public class OrderTicketsServlet extends HttpServlet {
 
     private OrderTicketsService orderTicketsService = new OrderTicketsService();
     private DateUtils dateUtils = new DateUtils();
-    private Reservation res = new Reservation();
+    private ReservationService res = new ReservationService();
     private TrainServices trainServices = new TrainServices();
 
     @Override
