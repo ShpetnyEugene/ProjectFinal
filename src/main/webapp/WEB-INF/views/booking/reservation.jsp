@@ -18,20 +18,20 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th style="width: 10%"><fmt:message key="id" bundle="${messages}"/></th>
-                <th style="width: 15%"><fmt:message key="stationStart" bundle="${messages}"/></th>
-                <th style="width: 15%"><fmt:message key="departureStation" bundle="${messages}"/></th>
-                <th style="width: 25%"><fmt:message key="ArrivalDate" bundle="${messages}"/></th>
-                <th style="width: 25%"><fmt:message key="DepartureDate" bundle="${messages}"/></th>
-                <th style="width: 25%"><fmt:message key="price" bundle="${messages}"/></th>
-                <th style="width: 25%"><fmt:message key="nameTrain" bundle="${messages}"/></th>
-                <th style="width: 25%"><fmt:message key="numberFreePlaces" bundle="${messages}"/></th>
+                <th style="width: auto"><fmt:message key="id" bundle="${messages}"/></th>
+                <th style="width: auto"><fmt:message key="stationStart" bundle="${messages}"/></th>
+                <th style="width: auto"><fmt:message key="departureStation" bundle="${messages}"/></th>
+                <th style="width: auto"><fmt:message key="ArrivalDate" bundle="${messages}"/></th>
+                <th style="width: auto"><fmt:message key="DepartureDate" bundle="${messages}"/></th>
+                <th style="width: auto"><fmt:message key="price" bundle="${messages}"/></th>
+                <th style="width: auto"><fmt:message key="nameTrain" bundle="${messages}"/></th>
+                <th style="width: auto"><fmt:message key="numberFreePlaces" bundle="${messages}"/></th>
 
 
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="schedule" items="${schedules}">
+            <c:forEach var="schedule" varStatus="status" items="${schedules}">
                 <tr>
 
                 <th>${schedule.scheduleId}</th>
@@ -40,11 +40,9 @@
                 <th>${schedule.arrivalTime}</th>
                 <th>${schedule.departureTime}</th>
                 <th>${schedule.price}</th>
-                <c:forEach var="train" step="2" items="${trains}">
-
-                        <th>${train.name}</th>
-                        <th>${train.numberFreePlaces}</th>
-
+                <c:forEach var="train" begin="${status.index}" end="${status.index}" items="${trains}">
+                    <th>${train.name}</th>
+                    <th>${train.numberFreePlaces}</th>
                 </c:forEach>
 
 
