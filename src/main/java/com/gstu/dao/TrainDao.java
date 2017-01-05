@@ -16,14 +16,6 @@ public class TrainDao implements CrudDao<Train, Long> {
     private static final String SELECT_ALL_QUERY = "SELECT * FROM train";
 
 
-    // TODO Самый главный запр
-    private static final String SELECT_BY_DATE_QUERY = "SELECT  * FROM train " +
-            "INNER JOIN (station INNER JOIN schedule ON (station.idStation = schedule.stationEnd_idStation1)) ON train.idTrain = schedule.train_idTrain\n" +
-            "WHERE (((schedule.order)=1)" +
-            " AND ((schedule.stationEnd_idStation1)=2) " +
-            " AND ((train.numberFreePlaces)<>0) " +
-            "AND ((schedule.departureTime)>11/12/2015)) AND ((schedule.stationStart_idStation)=1);";
-
     private static final String DELETE_BY_ID_QUERY = "DELETE FROM train WHERE idTrain = ?";
 
     public static final String INSERT_TRAIN = "INSERT INTO train (name,numberFreePlaces) VALUES (?,?) ";

@@ -20,6 +20,7 @@ public class ReservationServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       // TODO по списку расписаний найти все idTrain и по ним составить список поездов
         req.setAttribute("schedules",req.getSession().getAttribute("list"));
         req.setAttribute("stationStart",req.getSession().getAttribute("stationStart"));
         req.setAttribute("stationEnd",req.getSession().getAttribute("stationEnd"));

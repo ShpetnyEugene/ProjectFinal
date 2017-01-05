@@ -47,6 +47,6 @@ public class OrderTicketsServlet extends HttpServlet {
         req.getSession().setAttribute("stationStart",stationStart);
         req.getSession().setAttribute("stationEnd",stationEnd);
 
-        ViewUtils.doView("/booking/orderTickets", resp, req);
+        resp.sendRedirect("/order-tickets/reservation");
     }
 }
