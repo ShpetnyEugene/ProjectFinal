@@ -1,8 +1,0 @@
-ERROR 04.01.2017 13:34:29 [main] com.gstu.executor.Executor - 46:selectOne java.sql.SQLException: No value specified for parameter 2
-ERROR 04.01.2017 13:35:21 [main] com.gstu.executor.Executor - 46:selectOne java.sql.SQLException: Column 'name' not found.
-ERROR 04.01.2017 13:35:57 [main] com.gstu.executor.Executor - 46:selectOne java.sql.SQLException: Column 'name' not found.
-ERROR 04.01.2017 13:36:45 [main] com.gstu.executor.Executor - 46:selectOne java.sql.SQLException: Column 'name' not found.
-ERROR 04.01.2017 17:06:55 [main] com.gstu.executor.Executor - 85:setParams java.sql.SQLException: Parameter index out of range (1 > number of parameters, which is 0).
-ERROR 04.01.2017 17:06:55 [main] com.gstu.executor.Executor - 85:setParams java.sql.SQLException: Parameter index out of range (2 > number of parameters, which is 0).
-ERROR 04.01.2017 17:06:55 [main] com.gstu.executor.Executor - 85:setParams java.sql.SQLException: Parameter index out of range (3 > number of parameters, which is 0).
-ERROR 04.01.2017 17:09:47 [main] com.gstu.executor.Executor - 85:setParams java.sql.SQLException: Parameter index out of range (3 > number of parameters, which is 2).
