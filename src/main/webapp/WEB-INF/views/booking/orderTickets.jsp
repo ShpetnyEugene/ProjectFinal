@@ -16,7 +16,7 @@
 
 
         <br>
-        <form class="form-horizontal" method="post">
+        <form class="form-horizontal" action="/order-tickets/reservation" method="post">
             <div class="form-group">
                 <label class="control-label col-xs-5" for="stationArrival">Станция отправления:</label>
                 <div class="col-xs-3">
@@ -34,17 +34,16 @@
 
             <div class="form-group">
                 <label class="control-label col-xs-5">Дата отправления:</label>
-
                 <div class="col-xs-3">
                     <input type="text" name="date" class="form-control" id="datetimepicker">
                 </div>
             </div>
-            <div class="form-signin">
 
-                    <button class="btn btn-lg btn-primary btn-block" type="submit"><a href="${pageContext.request.contextPath}/order-tickets/reservation" type="button">Search</a></button>
-
-
+            <div style="align-content: center">
+                <button class="btn btn-lg btn-primary btn-block" style="width: auto" type="submit">Search</button>
             </div>
+
+
         </form>
 
 

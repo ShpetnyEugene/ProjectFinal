@@ -2,6 +2,7 @@ package com.gstu.controllers;
 
 import com.gstu.models.User;
 import com.gstu.services.UserService;
+import com.gstu.services.implementations.ServiceFactory;
 import com.gstu.utils.ViewUtils;
 import org.apache.log4j.Logger;
 
@@ -17,14 +18,14 @@ public class LoginServlet extends HttpServlet {
 
     private UserService service;
     private Logger log = Logger.getLogger(LoginServlet.class);
+
     @Override
     public void init() throws ServletException {
-        service = new UserService();
+        service = ServiceFactory.userService();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ViewUtils.doView("login", response, request);
-        System.out.println(request.getLocale());
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,11 +37,8 @@ public class LoginServlet extends HttpServlet {
 
         if (user != null && service.checkUserPassword(user, password)) {
             request.getSession().setAttribute("user", user);
-            log.info("The user is logged in :");
-            log.info(user);
             response.sendRedirect("/home");
         } else {
-
             ViewUtils.doView("login", response, request);
         }
     }

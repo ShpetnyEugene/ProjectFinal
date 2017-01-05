@@ -2,6 +2,7 @@ package com.gstu.controllers.admin;
 
 
 import com.gstu.services.UserService;
+import com.gstu.services.implementations.ServiceFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +15,7 @@ import java.sql.SQLException;
 @WebServlet("/admin/users")
 public class ViewsAllUsers extends HttpServlet {
 
-    private UserService userService = new UserService();
+    private UserService userService = ServiceFactory.userService();
 
     public ViewsAllUsers() throws SQLException {
     }
@@ -28,6 +29,6 @@ public class ViewsAllUsers extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         userService.deleteUserById(Long.parseLong(req.getParameter("Delete")));
-        resp.sendRedirect("/admin-menu/views-all-users");
+        resp.sendRedirect("/admin/users");
     }
 }

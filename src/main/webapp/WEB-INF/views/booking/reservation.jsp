@@ -5,19 +5,22 @@
 
 <title>Reservation</title>
 
+
 <t:_layout>
     <jsp:body>
-
         <fmt:setLocale value="${locale}"/>
         <fmt:setBundle basename="messages" var="messages"/>
 
+
+        <br>
+        <br>
 
         <table class="table table-hover">
             <thead>
             <tr>
                 <th style="width: 10%"><fmt:message key="id" bundle="${messages}"/></th>
-                <th style="width: 25%"><fmt:message key="stationStart" bundle="${messages}"/></th>
-                <th style="width: 25%"><fmt:message key="departureStation" bundle="${messages}"/></th>
+                <th style="width: 15%"><fmt:message key="stationStart" bundle="${messages}"/></th>
+                <th style="width: 15%"><fmt:message key="departureStation" bundle="${messages}"/></th>
                 <th style="width: 25%"><fmt:message key="ArrivalDate" bundle="${messages}"/></th>
                 <th style="width: 25%"><fmt:message key="DepartureDate" bundle="${messages}"/></th>
                 <th style="width: 25%"><fmt:message key="price" bundle="${messages}"/></th>
@@ -31,27 +34,38 @@
             <c:forEach var="schedule" items="${schedules}">
                 <tr>
 
-                    <th>${schedule.scheduleId}</th>
-                    <th>${stationStart}</th>
-                    <th>${stationEnd}</th>
-                    <th>${schedule.arrivalTime}</th>
-                    <th>${schedule.departureTime}</th>
-                    <th>${schedule.price}</th>
-                    <th> </th>
+                <th>${schedule.scheduleId}</th>
+                <th>${stationStart}</th>
+                <th>${stationEnd}</th>
+                <th>${schedule.arrivalTime}</th>
+                <th>${schedule.departureTime}</th>
+                <th>${schedule.price}</th>
+                <c:forEach var="train" step="2" items="${trains}">
 
-                    <th>
-                        <form name = "Delete" method="post">
-                            <button type="submit" name = "Delete" value="${train.idTrain}"><fmt:message key="reservation" bundle="${messages}"/></button>
-                        </form>
-                    </th>
+                        <th>${train.name}</th>
+                        <th>${train.numberFreePlaces}</th>
+
+                </c:forEach>
+
+
+                <th>
+                    <form name="reservation" action="${pageContext.request.contextPath}/ticket-purchase"
+                          method="post">
+                        <button type="submit" name="reservation" value="${train.idTrain}"><fmt:message
+                                key="reservation" bundle="${messages}"/></button>
+                    </form>
+                </th>
+
                 </tr>
             </c:forEach>
+
             </tbody>
         </table>
 
         <div class="col-xs-offset-4 col-xs-9">
             <div class="col-xs-3">
-                <a href="${pageContext.request.contextPath}/home" style="width: 170%" type="button" class="btn btn-lg btn-primary btn-block"><fmt:message key="backHomePage" bundle="${messages}"/>></a>
+                <a href="${pageContext.request.contextPath}/home" style="width: 170%" type="button"
+                   class="btn btn-lg btn-primary btn-block"><fmt:message key="backHomePage" bundle="${messages}"/></a>
             </div>
         </div>
 

@@ -92,10 +92,6 @@ public class Executor {
 
 
     private void setParam(PreparedStatement stmt, int i, Object object) throws SQLException {
-        Class c = object.getClass();
-        System.out.println("---------------------");
-        System.out.println(object);
-
         if (object instanceof String) {
             stmt.setString(i, (String) object);
         } else if (object instanceof Integer) {

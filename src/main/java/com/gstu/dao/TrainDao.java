@@ -18,13 +18,20 @@ public class TrainDao implements CrudDao<Train, Long> {
 
     private static final String DELETE_BY_ID_QUERY = "DELETE FROM train WHERE idTrain = ?";
 
-    public static final String INSERT_TRAIN = "INSERT INTO train (name,numberFreePlaces) VALUES (?,?) ";
+    private static final String INSERT_TRAIN = "INSERT INTO train (name,numberFreePlaces) VALUES (?,?) ";
+
+    private static final String DECREMENT_NUMBER_FREE_PLACES = "UPDATE train SET numberFreePlaces = numberFreePlaces -1 WHERE idTrain = ?";
 
 
     private Executor executor;
 
     public TrainDao(Executor executor) {
         this.executor = executor;
+    }
+
+
+    public void decrementNumberFreePlaces(long id){
+        executor.execUpdate(DECREMENT_NUMBER_FREE_PLACES,id);
     }
 
 

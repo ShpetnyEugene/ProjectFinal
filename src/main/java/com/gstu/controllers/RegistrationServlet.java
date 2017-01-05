@@ -3,6 +3,7 @@ package com.gstu.controllers;
 import com.gstu.models.Role;
 import com.gstu.models.User;
 import com.gstu.services.UserService;
+import com.gstu.services.implementations.ServiceFactory;
 import com.gstu.utils.ViewUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -33,7 +34,7 @@ public class RegistrationServlet extends HttpServlet {
     private static final String IDENTIFICATION_NUMBER = "identificationNumber";
     private static final String BIRTHDAY = "birthDay";
 
-    private UserService userService = new UserService();
+    private UserService userService = ServiceFactory.userService();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

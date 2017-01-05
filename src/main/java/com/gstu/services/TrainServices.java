@@ -19,4 +19,14 @@ public class TrainServices {
     public void addTrain(Train train){
         trainDao.insertTrain(train);
     }
+
+
+    public void decrementNumberFreePlaces(long id){
+        trainDao.decrementNumberFreePlaces(id);
+    }
+
+
+    public Train getTrainById(long id){
+        return trainDao.findById(id);
+    }
 }

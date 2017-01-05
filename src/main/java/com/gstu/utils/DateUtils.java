@@ -13,16 +13,7 @@ public class DateUtils {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd HH-mm");
-        String resulDate = dateFormat1.format(date);
-//        java.util.Date date = null;
-//        try {
-//            date = dateFormat.parse(dateInput);
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//        SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
-//        return Date.valueOf(dateFormat1.format(date));
-        return resulDate;
+        SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+        return dateFormat1.format(date);
     }
 }
