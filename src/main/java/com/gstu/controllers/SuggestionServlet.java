@@ -2,7 +2,9 @@ package com.gstu.controllers;
 
 import com.google.gson.Gson;
 import com.gstu.dao.StationDao;
+import com.gstu.executor.Executor;
 import com.gstu.models.Station;
+import com.gstu.services.ConnectionFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,11 +19,14 @@ public class SuggestionServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Station> stations;
-        StationDao stationDao = new StationDao();
-        stations = stationDao.findAll();
+
+        StationDao stationDao = new StationDao(new Executor(ConnectionFactory.getConnection()));
+        List<Station> stations = stationDao.findAll();
+
         Gson gson = new Gson();
+
         resp.setContentType("text/html; charset=UTF-8");
+
         String json = gson.toJson(stations);
         resp.getWriter().print(json);
     }

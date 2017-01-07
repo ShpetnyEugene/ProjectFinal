@@ -2,18 +2,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${locale}"/>
+<fmt:setBundle basename="messages" var="messages"/>
 
-<title>Reservation</title>
-
-
-<t:_layout>
+<t:_layout title="Reservation">
     <jsp:body>
-        <fmt:setLocale value="${locale}"/>
-        <fmt:setBundle basename="messages" var="messages"/>
-
-
-        <br>
-        <br>
 
         <table class="table table-hover">
             <thead>
@@ -26,7 +19,7 @@
                 <th style="width: auto"><fmt:message key="price" bundle="${messages}"/></th>
                 <th style="width: auto"><fmt:message key="nameTrain" bundle="${messages}"/></th>
                 <th style="width: auto"><fmt:message key="numberFreePlaces" bundle="${messages}"/></th>
-
+                <th style="width: auto"><fmt:message key="action" bundle="${messages}"/></th>
 
             </tr>
             </thead>
@@ -43,30 +36,18 @@
                 <c:forEach var="train" begin="${status.index}" end="${status.index}" items="${trains}">
                     <th>${train.name}</th>
                     <th>${train.numberFreePlaces}</th>
+                    <th>
+                        <form name="reservation" action="${pageContext.request.contextPath}/ticket-purchase"
+                              method="post">
+                            <button type="submit" name="reservation" value="${train.idTrain}"><fmt:message key="reservation" bundle="${messages}"/></button>
+                        </form>
+                    </th>
                 </c:forEach>
-
-
-                <th>
-                    <form name="reservation" action="${pageContext.request.contextPath}/ticket-purchase"
-                          method="post">
-                        <button type="submit" name="reservation" value="${train.idTrain}"><fmt:message
-                                key="reservation" bundle="${messages}"/></button>
-                    </form>
-                </th>
-
                 </tr>
             </c:forEach>
 
             </tbody>
         </table>
-
-        <div class="col-xs-offset-4 col-xs-9">
-            <div class="col-xs-3">
-                <a href="${pageContext.request.contextPath}/home" style="width: 170%" type="button"
-                   class="btn btn-lg btn-primary btn-block"><fmt:message key="backHomePage" bundle="${messages}"/></a>
-            </div>
-        </div>
-
 
     </jsp:body>
 </t:_layout>

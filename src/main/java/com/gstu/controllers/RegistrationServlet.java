@@ -19,8 +19,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 
-
-
 @WebServlet("/registration")
 public class RegistrationServlet extends HttpServlet {
 
@@ -78,6 +76,8 @@ public class RegistrationServlet extends HttpServlet {
 
 
         if (!userService.addUser(new User(firstName, lastName, patronymic, birthdayDate, identificationNumber, login, password, Role.USER))) {
+
+           // TODO Исправить сообщение тут нужно тащить локаль
             errorMessages = "1";
             req.setAttribute("error", errorMessages);
             ViewUtils.doView("registration", resp, req);

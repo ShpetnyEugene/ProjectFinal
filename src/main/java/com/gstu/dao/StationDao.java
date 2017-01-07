@@ -13,7 +13,7 @@ public class StationDao implements CrudDao<Station, Long> {
 
     private static Logger log = Logger.getLogger(Station.class);
 
-
+    // Queries
     private static final String SELECT_ALL_QUERY = "SELECT * FROM station";
 
     private static final String SELECT_BY_ID = "SELECT * FROM station WHERE idStation = ?";
@@ -27,13 +27,17 @@ public class StationDao implements CrudDao<Station, Long> {
 
     private Executor executor = new Executor(ConnectionFactory.getConnection());
 
-
-    public Station findIdByName(String name){
-        return executor.selectOne(SELECT_ID_BY_NAME,new StationMapper(),name);
+    public StationDao(Executor executor) {
+        this.executor = executor;
     }
 
-    public Station findIdByNameRu(String name){
-        return executor.selectOne(SELECT_ID_BY_NAME_RU,new StationMapper(),name);
+
+    public Station findIdByName(String name) {
+        return executor.selectOne(SELECT_ID_BY_NAME, new StationMapper(), name);
+    }
+
+    public Station findIdByNameRu(String name) {
+        return executor.selectOne(SELECT_ID_BY_NAME_RU, new StationMapper(), name);
     }
 
     @Override
@@ -48,18 +52,30 @@ public class StationDao implements CrudDao<Station, Long> {
 
     }
 
+    /**
+     * The method is not supported
+     *
+     * @throws UnsupportedOperationException, when calling
+     */
     @Override
     public Station update(Station entity) {
-        return null;
+        log.error(new UnsupportedOperationException());
+        throw new UnsupportedOperationException();
     }
 
+    /**
+     * The method is not supported
+     *
+     * @throws UnsupportedOperationException, when calling
+     */
     @Override
     public Station save(Station entity) {
-        return null;
+        log.error(new UnsupportedOperationException());
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void deleteById(Long aLong) {
-        executor.execUpdate(DELETE_BY_ID,aLong);
+        executor.execUpdate(DELETE_BY_ID, aLong);
     }
 }

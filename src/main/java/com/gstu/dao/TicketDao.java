@@ -1,21 +1,24 @@
 package com.gstu.dao;
 
 import com.gstu.executor.Executor;
-import com.gstu.models.Bid;
+import com.gstu.models.Ticket;
 import com.gstu.services.ConnectionFactory;
 import org.apache.log4j.Logger;
 
+import java.sql.SQLException;
 import java.util.List;
 
-public class BidDao implements CrudDao<Bid,Long> {
+public class TicketDao implements CrudDao<Ticket, Long> {
 
-    private static Logger log = Logger.getLogger(BidDao.class);
     private Executor executor = new Executor(ConnectionFactory.getConnection());
+    private static Logger log = Logger.getLogger(Ticket.class);
 
-    private static final String INSERT_BID = "INSERT INTO bid VALUES(?)";
+    // QUERIES
+    private static final String INSERT_TICKET_QUERY = "INSERT INTO ticket (user_idUser) VALUES (?) ";
 
-    public int insertBid(Bid bid){
-        return executor.execUpdate(INSERT_BID,bid);
+
+    public int insertTicket(long id) {
+        return executor.execUpdate(INSERT_TICKET_QUERY, id);
     }
 
     /**
@@ -23,8 +26,9 @@ public class BidDao implements CrudDao<Bid,Long> {
      *
      * @throws UnsupportedOperationException, when calling
      */
+
     @Override
-    public Bid findById(Long id) {
+    public Ticket findById(Long id) throws SQLException {
         log.error(new UnsupportedOperationException());
         throw new UnsupportedOperationException();
     }
@@ -35,7 +39,7 @@ public class BidDao implements CrudDao<Bid,Long> {
      * @throws UnsupportedOperationException, when calling
      */
     @Override
-    public List<Bid> findAll() {
+    public List<Ticket> findAll() {
         log.error(new UnsupportedOperationException());
         throw new UnsupportedOperationException();
     }
@@ -46,7 +50,13 @@ public class BidDao implements CrudDao<Bid,Long> {
      * @throws UnsupportedOperationException, when calling
      */
     @Override
-    public Bid update(Bid entity) {
+    public Ticket update(Ticket entity) {
+        log.error(new UnsupportedOperationException());
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Ticket save(Ticket entity) {
         log.error(new UnsupportedOperationException());
         throw new UnsupportedOperationException();
     }
@@ -57,18 +67,7 @@ public class BidDao implements CrudDao<Bid,Long> {
      * @throws UnsupportedOperationException, when calling
      */
     @Override
-    public Bid save(Bid entity) {
-        log.error(new UnsupportedOperationException());
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * The method is not supported
-     *
-     * @throws UnsupportedOperationException, when calling
-     */
-    @Override
-    public void deleteById(Long aLong)  {
+    public void deleteById(Long aLong) {
         log.error(new UnsupportedOperationException());
         throw new UnsupportedOperationException();
     }

@@ -1,22 +1,16 @@
-<%--suppress ALL --%>
-<%--suppress ALL --%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${locale}"/>
+<fmt:setBundle basename="messages" var="messages"/>
 
-<title>Views all Station</title>
-
-<t:_layout>
+<t:_layout title="Views all Station">
     <jsp:body>
 
 
-        <fmt:setLocale value="${locale}"/>
-        <fmt:setBundle basename="messages" var="messages"/>
-
-
         <br>
-        <form class="form-horizontal" action="/order-tickets/reservation" method="post">
+        <form class="form-horizontal" action="${pageContext.request.contextPath}/order-tickets/reservation" method="get">
             <div class="form-group">
                 <label class="control-label col-xs-5" for="stationArrival">Станция отправления:</label>
                 <div class="col-xs-3">
@@ -47,30 +41,27 @@
         </form>
 
 
-        <script type="text/javascript">
 
-            var options = {
-                url: "http://localhost:8080/suggest/station",
-
-
-                getValue: "name",
-
-                list: {
-                    match: {
-                        enabled: true
-                    }
-                },
-                theme: "square"
-            };
-
-            $("#stationArrival,#stationEnd").easyAutocomplete(options);
-
-
-            $(function () {
-                $('#datetimepicker').datetimepicker(
-                        {pickTime: false, language: 'ru'}
-                );
-            });
-        </script>
     </jsp:body>
 </t:_layout>
+
+<script type="text/javascript">
+    var options = {
+        url: "${pageContext.request.contextPath}/suggest/station",
+        getValue: "name",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        },
+        theme: "square"
+    };
+
+    $("#stationArrival,#stationEnd").easyAutocomplete(options);
+    $(function () {
+        $('#datetimepicker').datetimepicker(
+                {pickTime: false, language: 'ru'}
+        );
+    });
+</script>

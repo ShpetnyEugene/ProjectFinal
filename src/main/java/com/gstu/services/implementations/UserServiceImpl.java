@@ -4,7 +4,6 @@ import com.gstu.dao.UserDao;
 import com.gstu.executor.Executor;
 import com.gstu.models.User;
 import com.gstu.services.ConnectionFactory;
-import com.gstu.services.RegistrationService;
 import com.gstu.services.UserService;
 
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.List;
  * @author Shpetny Eugene
  * @version 1.0
  * */
-class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService{
 
     // Variable on which is synchronized
     private final static Object lock = new Object();
@@ -23,8 +22,6 @@ class UserServiceImpl implements UserService{
     UserServiceImpl() {
         this.userDao = new UserDao(new Executor(ConnectionFactory.getConnection()));
     }
-
-    private RegistrationService registrationService = new RegistrationService();
 
     /**
      * Find user by login.
@@ -75,13 +72,25 @@ class UserServiceImpl implements UserService{
      */
     public boolean addUser(User user) {
         synchronized (lock) {
-            if (registrationService.checkUserByIdentificationNumber(user.getIdentificationNumber())
-                    || registrationService.checkUserByLogin(user.getLogin())) {
+            if (checkUserByIdentificationNumber(user.getIdentificationNumber())
+                    || checkUserByLogin(user.getLogin())) {
                 return false;
             } else {
                 userDao.insertUser(user);
                 return true;
             }
         }
+    }
+
+
+    public boolean checkUserByLogin(String login) {
+        UserDao userDao = new UserDao(new Executor(ConnectionFactory.getConnection()));
+        return userDao.findByLogin(login) != null;
+    }
+
+
+    public boolean checkUserByIdentificationNumber(String identificationNumber) {
+        UserDao userDao = new UserDao(new Executor(ConnectionFactory.getConnection()));
+        return userDao.findByIdentificationNumber(identificationNumber) != null;
     }
 }

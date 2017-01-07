@@ -1,9 +1,9 @@
-<%@tag description="Overall Page template" pageEncoding="UTF-8" %>
+<!DOCTYPE html><%@tag description="Overall Page template" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="${locale}"/>
+<%@attribute name="title"%>
 <fmt:setBundle basename="messages" var="messages"/>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -14,12 +14,13 @@
     <meta name="author" content="Yeugen Shpetny">
 
     <%--<link rel="icon" href="../../favicon.ico">--%>
-    <title>Trains</title>
+    <title>${title}</title>
 
     <!-- Bootstrap core CSS -->
 
     <!-- Custom styles for this template -->
     <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/style-modal.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -31,17 +32,10 @@
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/resources/datapicker/bootstrap-datetimepicker.min.css"/>
     <link href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resources/bootstrap/css/ie10-viewport-bug-workaround.css"
-          rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/easy-autocomplete/easy-autocomplete.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resources/easy-autocomplete/easy-autocomplete.min.css"
-          rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/easy-autocomplete/easy-autocomplete.themes.css"
           rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resources/easy-autocomplete/easy-autocomplete.themes.min.css"
-          rel="stylesheet">
 </head>
-
 <body>
 
 <!-- Fixed navbar -->
@@ -115,22 +109,13 @@
 <script type="text/javascript"
         src="${pageContext.request.contextPath}/resources/jquery/jquery-3.1.1.min.js"></script>
 <script type="text/javascript"
-        src="${pageContext.request.contextPath}/resources/datapicker/moment-with-locales.min.js"></script>
-<script type="text/javascript"
         src="${pageContext.request.contextPath}/resources/datapicker/moment-with-locales.js"></script>
-<script type="text/javascript"
-        src="${pageContext.request.contextPath}/resources/datapicker/moment.min.js"></script>
-<script type="text/javascript"
-        src="${pageContext.request.contextPath}/resources/datapicker/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript"
         src="${pageContext.request.contextPath}/resources/datapicker/moment.js"></script>
 <script type="text/javascript"
+        src="${pageContext.request.contextPath}/resources/datapicker/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript"
         src="${pageContext.request.contextPath}/resources/easy-autocomplete/jquery.easy-autocomplete.js"></script>
 <script type="text/javascript"
-        src="${pageContext.request.contextPath}/resources/easy-autocomplete/jquery.easy-autocomplete.min.js"></script>
-<script type="text/javascript"
         src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript"
-        src="${pageContext.request.contextPath}/resources/datapicker/bootstrap-datetimepicker.min.js"></script>
-
 </html>

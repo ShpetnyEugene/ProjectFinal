@@ -5,11 +5,14 @@ import com.gstu.executor.Executor;
 import com.gstu.mappers.ScheduleMapper;
 import com.gstu.models.Schedule;
 import com.gstu.services.ConnectionFactory;
+import org.apache.log4j.Logger;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class ScheduleDao implements CrudDao<Schedule, Long> {
+
+    private Logger log = Logger.getLogger(Schedule.class);
 
     private static final String QUERY = "SELECT  * FROM train INNER JOIN (station INNER JOIN schedule ON (station.idStation = schedule.stationEnd_idStation)) ON train.idTrain = schedule.train_idTrain\n" +
             "WHERE (((schedule.stationStart_idStation)=?) AND((schedule.stationEnd_idStation)=?) AND ((train.numberFreePlaces)<>0) AND ((schedule.departureTime)>?));";
@@ -17,31 +20,60 @@ public class ScheduleDao implements CrudDao<Schedule, Long> {
     private Executor executor = new Executor(ConnectionFactory.getConnection());
 
     public List<Schedule> selectD(long start, long end, String date) {
-        return executor.selectList(QUERY,new ScheduleMapper(),start,end,date);
+        return executor.selectList(QUERY, new ScheduleMapper(), start, end, date);
     }
 
+    /**
+     * The method is not supported
+     *
+     * @throws UnsupportedOperationException, when calling
+     */
     @Override
     public Schedule findById(Long id) throws SQLException {
         return null;
     }
 
+    /**
+     * The method is not supported
+     *
+     * @throws UnsupportedOperationException, when calling
+     */
     @Override
     public List<Schedule> findAll() {
-        return null;
+        log.error(new UnsupportedOperationException());
+        throw new UnsupportedOperationException();
     }
 
+    /**
+     * The method is not supported
+     *
+     * @throws UnsupportedOperationException, when calling
+     */
     @Override
     public Schedule update(Schedule entity) {
-        return null;
+        log.error(new UnsupportedOperationException());
+        throw new UnsupportedOperationException();
     }
 
+    /**
+     * The method is not supported
+     *
+     * @throws UnsupportedOperationException, when calling
+     */
     @Override
     public Schedule save(Schedule entity) {
-        return null;
+        log.error(new UnsupportedOperationException());
+        throw new UnsupportedOperationException();
     }
 
+    /**
+     * The method is not supported
+     *
+     * @throws UnsupportedOperationException, when calling
+     */
     @Override
     public void deleteById(Long aLong) {
-
+        log.error(new UnsupportedOperationException());
+        throw new UnsupportedOperationException();
     }
 }

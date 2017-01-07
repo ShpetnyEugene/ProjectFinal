@@ -2,7 +2,7 @@ package com.gstu.controllers.admin;
 
 
 import com.gstu.models.Train;
-import com.gstu.services.TrainServices;
+import com.gstu.services.implementations.TrainServiceImpl;
 import com.gstu.utils.ViewUtils;
 
 import javax.servlet.ServletException;
@@ -23,7 +23,7 @@ public class AddTrain extends HttpServlet{
         String name = req.getParameter(NAME);
         String numberFreePlaces = req.getParameter(NUMBER_FREE_PLACES);
 
-        TrainServices trainServices = new TrainServices();
+        TrainServiceImpl trainServices = new TrainServiceImpl();
         trainServices.addTrain(new Train(name,Integer.parseInt(numberFreePlaces)));
 
         ViewUtils.doView("adminMenu/addTrain",resp,req);

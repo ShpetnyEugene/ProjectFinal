@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * It contains methods that help display pages
+ *
  * @author Shpetny Eugene
  * @version 1.0
  */
@@ -19,13 +21,12 @@ public class ViewUtils {
 
     private static Logger log = Logger.getLogger(ViewUtils.class);
 
-
-
     /**
      * This method displays specified page
      *
      * @param viewName - Name displayed page views relative to the directory
      * @throws IllegalArgumentException - if page not found
+     * @throws ServletException - if an exception occurs that interrupts normal work servlet
      */
     public static void doView(String viewName, HttpServletResponse response, HttpServletRequest request) {
         try {

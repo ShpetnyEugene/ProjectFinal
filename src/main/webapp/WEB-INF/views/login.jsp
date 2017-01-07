@@ -5,10 +5,8 @@
 <fmt:setLocale value="${locale}"/>
 <fmt:setBundle basename="messages" var="messages"/>
 
-<%--TODO--%>
-<title>Login</title>
 
-<t:_layout>
+<t:_layout title="Login">
     <jsp:body>
 
         <div class="page-header">
@@ -33,7 +31,7 @@
                                placeholder="<fmt:message key="password" bundle="${messages}"/>" required>
                     </div>
                     <button type="submit" class="btn btn-default btn-block"><fmt:message key="signIn"
-                                                                               bundle="${messages}"/></button>
+                                                                                         bundle="${messages}"/></button>
                 </form>
                 <hr>
                 <h4>Еще нет аккаунта? Вы можете бесплатно зарегистрироваться</h4>
@@ -41,5 +39,10 @@
                    class="btn btn-primary btn-block"><fmt:message key="registers" bundle="${messages}"/></a>
             </div>
         </div>
+
+
+
+
+
     </jsp:body>
 </t:_layout>

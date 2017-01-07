@@ -16,9 +16,11 @@ public class StationMapper implements Mapper<Station> {
     @Override
     public Station processLine(ResultSet resultSet) throws SQLException {
         Station station = new Station();
+
         station.setIdStation(resultSet.getLong(ID_STATION));
         station.setName(resultSet.getString(NAME));
         station.setName_ru(resultSet.getString(NAME_RU));
+
         return station;
 
     }

@@ -13,7 +13,6 @@ public class DaoFactory {
     }
 
     public static TrainDao trainDao() {
-
         Executor executor = new Executor(ConnectionFactory.getConnection());
         return new TrainDao(executor);
     }

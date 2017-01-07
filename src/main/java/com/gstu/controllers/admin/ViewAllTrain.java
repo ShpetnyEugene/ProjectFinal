@@ -1,8 +1,8 @@
 package com.gstu.controllers.admin;
 
-import com.gstu.services.RecordsTrainService;
 import com.gstu.services.TrainService;
 import com.gstu.services.implementations.ServiceFactory;
+import com.gstu.services.implementations.TrainServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +28,7 @@ public class ViewAllTrain extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RecordsTrainService recService = new RecordsTrainService();
+        TrainServiceImpl recService = new TrainServiceImpl();
         recService.DeleteTrainById(Long.parseLong(req.getParameter("Delete")));
         resp.sendRedirect("/admin/trains");
     }

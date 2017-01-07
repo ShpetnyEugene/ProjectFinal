@@ -12,7 +12,7 @@ public class AdministrationServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/views/adminMenu/adminMenu.jsp").forward(req,resp);
+        req.getRequestDispatcher("/WEB-INF/views/adminMenu/admin.jsp").forward(req,resp);
     }
 }
 

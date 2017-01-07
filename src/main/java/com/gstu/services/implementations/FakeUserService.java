@@ -43,4 +43,14 @@ public class FakeUserService implements UserService{
     public boolean checkUserPassword(User user, String password) {
         return true;
     }
+
+    @Override
+    public boolean checkUserByLogin(String login) {
+        return false;
+    }
+
+    @Override
+    public boolean checkUserByIdentificationNumber(String identificationNumber) {
+        return false;
+    }
 }

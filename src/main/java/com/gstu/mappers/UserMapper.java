@@ -10,8 +10,6 @@ import java.sql.SQLException;
 
 public class UserMapper implements Mapper<User>{
 
-    //private static Logger log = Logger.getLogger(UserDao.class);
-
     private static final String ID_USER = "idUSer";
     private static final String FIRST_NAME = "firstName";
     private static final String LAST_NAME = "lastName";
@@ -25,6 +23,7 @@ public class UserMapper implements Mapper<User>{
 
     @Override
     public User processLine(ResultSet resultSet) throws SQLException {
+
         User user = new User();
         user.setIdUser(resultSet.getLong(ID_USER));
         user.setFirstName(resultSet.getString(FIRST_NAME));

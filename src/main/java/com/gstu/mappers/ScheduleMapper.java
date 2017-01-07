@@ -5,6 +5,7 @@ import com.gstu.models.Schedule;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 
 public class ScheduleMapper implements Mapper<Schedule> {
@@ -24,8 +25,10 @@ public class ScheduleMapper implements Mapper<Schedule> {
         Schedule schedule = new Schedule();
 
         schedule.setScheduleId(resultSet.getLong(SCHEDULE_ID));
-        schedule.setArrivalTime(resultSet.getDate(ARRIVAL_TIME));
-        schedule.setDepartureTime(resultSet.getDate(DEPARTURE_TIME));
+        Timestamp timestamp =  resultSet.getTimestamp(ARRIVAL_TIME);
+        schedule.setArrivalTime(timestamp);
+        Timestamp timestamp1 = (resultSet.getTimestamp(DEPARTURE_TIME));
+        schedule.setDepartureTime(timestamp1);
         schedule.setPrice(resultSet.getInt(PRICE));
         schedule.setTrain_idTrain(resultSet.getLong(TRAIN_ID));
         schedule.setStationEndId(resultSet.getLong(STATION_START_ID));

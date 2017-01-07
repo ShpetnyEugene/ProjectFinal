@@ -20,6 +20,6 @@ public class OrderTicketsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("/order-tickets/reservation");
+        ViewUtils.doView("/booking/orderTickets", resp, req);
     }
 }

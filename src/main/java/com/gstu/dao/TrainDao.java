@@ -90,6 +90,7 @@ public class TrainDao implements CrudDao<Train, Long> {
         log.error(new UnsupportedOperationException());
         throw new UnsupportedOperationException();
     }
+
     /**
      * Delete train by id
      *

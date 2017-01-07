@@ -3,10 +3,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
-<title>Views all train</title>
-
-<t:_layout>
+<t:_layout title="Views all train">
     <jsp:body>
 
         <fmt:setLocale value="${locale}"/>
@@ -16,10 +13,10 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th style="width: 10%"><fmt:message key="id" bundle="${messages}"/></th>
-                <th style="width: 25%"><fmt:message key="nameTrain" bundle="${messages}"/></th>
-                <th style="width: 25%"><fmt:message key="numberFreePlaces" bundle="${messages}"/></th>
-                <th style="width: 25%"><fmt:message key="delete" bundle="${messages}"/></th>
+                <th><fmt:message key="id" bundle="${messages}"/></th>
+                <th><fmt:message key="nameTrain" bundle="${messages}"/></th>
+                <th><fmt:message key="numberFreePlaces" bundle="${messages}"/></th>
+                <th><fmt:message key="delete" bundle="${messages}"/></th>
             </tr>
             </thead>
             <tbody>
