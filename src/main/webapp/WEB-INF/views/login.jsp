@@ -15,8 +15,7 @@
 
         <div class="row">
             <div class="col-md-8">
-                <p class="lead">Чтобы воспользоваться данным ресурсом Вы должны создать аккаунт,
-                    после чего вы сможете совершать покупку билетов на поезда.</p>
+                <p class="lead"><fmt:message key="loginMessage" bundle="${messages}"/></p>
             </div>
             <div class="col-md-4">
                 <form class="form-signin" method="post">
@@ -34,14 +33,11 @@
                                                                                          bundle="${messages}"/></button>
                 </form>
                 <hr>
-                <h4>Еще нет аккаунта? Вы можете бесплатно зарегистрироваться</h4>
+                <h4><fmt:message key="noAccount" bundle="${messages}"/></h4>
                 <a href="${pageContext.request.contextPath}/registration" type="button"
                    class="btn btn-primary btn-block"><fmt:message key="registers" bundle="${messages}"/></a>
             </div>
         </div>
-
-
-
 
 
     </jsp:body>

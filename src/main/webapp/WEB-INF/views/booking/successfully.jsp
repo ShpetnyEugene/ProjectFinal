@@ -5,11 +5,12 @@
 <fmt:setLocale value="${locale}"/>
 <fmt:setBundle basename="messages" var="messages"/>
 
-<t:_layout title="Home">
+<t:_layout title="Successfully">
     <jsp:body>
         <div class="page-header">
-            <h1><fmt:message key="homePage" bundle="${messages}"/></h1>
-            <p class="lead"><fmt:message key="homeHello" bundle="${messages}"/></p>
+            <h1><fmt:message key="successfully" bundle="${messages}"/></h1>
+            <h3><fmt:message key="needPay" bundle="${messages}"/> ${price} </h3>
+            <h3><fmt:message key="cash" bundle="${messages}"/> ${number}  </h3>
         </div>
     </jsp:body>
 </t:_layout>

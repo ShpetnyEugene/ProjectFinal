@@ -4,7 +4,6 @@ package com.gstu.controllers;
 import com.gstu.models.User;
 import com.gstu.services.ReservationService;
 import com.gstu.services.implementations.TrainServiceImpl;
-import com.gstu.utils.ViewUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,12 +29,13 @@ public class TicketPurchase extends HttpServlet {
         long idReservation = Long.parseLong(req.getParameter("reservation"));
         trainServices.decrementNumberFreePlaces(idReservation);
 
-        User user = (User)req.getSession().getAttribute("user");
+        req.getSession().setAttribute("price", reservationService.findPriceByID(idReservation));
 
+
+        User user = (User) req.getSession().getAttribute("user");
+        int a = 0;
         reservationService.insertTicket(user.getIdUser());
-
-        ViewUtils.doView("/booking/reservation", resp, req);
-
-        //TODO А также выводилось что билет заказан
+        req.getSession().setAttribute("accountNumber", a + (int) (Math.random() * 1_000_000_000));
+        resp.sendRedirect("/successfully");
     }
 }

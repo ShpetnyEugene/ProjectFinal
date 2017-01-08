@@ -15,7 +15,6 @@ public class TrainDao implements CrudDao<Train, Long> {
 
     private static final String SELECT_ALL_QUERY = "SELECT * FROM train";
 
-
     private static final String DELETE_BY_ID_QUERY = "DELETE FROM train WHERE idTrain = ?";
 
     private static final String INSERT_TRAIN = "INSERT INTO train (name,numberFreePlaces) VALUES (?,?) ";
@@ -100,4 +99,5 @@ public class TrainDao implements CrudDao<Train, Long> {
     public void deleteById(Long aLong) {
         executor.execUpdate(DELETE_BY_ID_QUERY, aLong);
     }
+
 }

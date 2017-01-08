@@ -30,4 +30,8 @@ public class ReservationService {
     public int insertTicket(long id) {
         return ticketDao.insertTicket(id);
     }
+
+    public int findPriceByID(long id){
+        return scheduleDao.findPriceById(id).getPrice();
+    }
 }

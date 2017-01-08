@@ -19,11 +19,10 @@ public class SuggestionServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Gson gson = new Gson();
 
         StationDao stationDao = new StationDao(new Executor(ConnectionFactory.getConnection()));
         List<Station> stations = stationDao.findAll();
-
-        Gson gson = new Gson();
 
         resp.setContentType("text/html; charset=UTF-8");
 

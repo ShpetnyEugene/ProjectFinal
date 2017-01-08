@@ -6,8 +6,20 @@ import java.util.List;
 
 public interface TrainService {
 
-   void DeleteTrainById(long id);
+    /**
+     * Delete train by id
+     *
+     * @param id - id of the train you want to remove
+     */
+    void DeleteTrainById(long id);
 
+
+    /**
+     * Find all train
+     * Find trains in database if users not found returns null, else returns List<Train>
+     *
+     * @return a list of users
+     */
     List<Train> allTrains();
 
     /**
@@ -31,5 +43,5 @@ public interface TrainService {
      *
      * @param train - are added to the database
      */
-     void addTrain(Train train);
+    void addTrain(Train train);
 }

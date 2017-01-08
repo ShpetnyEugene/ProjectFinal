@@ -33,8 +33,6 @@
           href="${pageContext.request.contextPath}/resources/datapicker/bootstrap-datetimepicker.min.css"/>
     <link href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/easy-autocomplete/easy-autocomplete.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resources/easy-autocomplete/easy-autocomplete.themes.css"
-          rel="stylesheet">
 </head>
 <body>
 
@@ -54,11 +52,11 @@
                 <%--<li><a href="#contact">Информация</a></li>--%>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Сменить язык <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><fmt:message key="changeLanguage" bundle="${messages}"/> <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li>
                             <form method="post" action="${pageContext.request.contextPath}/config/language">
-                                <button class="btn btn-default btn-block" type="submit" name="local" value="rus"> Russian</button>
+                                <button class="btn btn-default btn-block" type="submit" name="local" value="rus">Русский</button>
                             </form>
                         </li>
                         <li>
@@ -87,8 +85,8 @@
                     </li>
                 </c:if>
                 <c:if test="${empty user}">
-                    <li><a href="${pageContext.request.contextPath}/login">Войти</a></li>
-                    <li><a href="${pageContext.request.contextPath}/registration">Зарегистрироваться</a></li>
+                    <li><a href="${pageContext.request.contextPath}/login"><fmt:message key="loginEnter" bundle="${messages}"/></a></li>
+                    <li><a href="${pageContext.request.contextPath}/registration"><fmt:message key="registration" bundle="${messages}"/></a></li>
                 </c:if>
             </ul>
         </div><!--/.nav-collapse -->
@@ -100,12 +98,11 @@
 </div>
 <footer class="footer">
     <div class="container">
-        <p class="text-muted">Финальное задание Шпетного Евгения</p>
+        <p class="text-muted"><fmt:message key="final" bundle="${messages}"/></p>
     </div>
 </footer>
 </body>
 
-<%--TODO Recomended to include scripts in the end of page --%>
 <script type="text/javascript"
         src="${pageContext.request.contextPath}/resources/jquery/jquery-3.1.1.min.js"></script>
 <script type="text/javascript"

@@ -11,10 +11,10 @@ public class DateUtils {
      *
      * @param dateInput - Date format, which is malformed
      * @return The date having the desired format, for further use
-     * @throws ParseException() - if the date can not be formatted
+     * @throws ParseException - if the date can not be formatted
      */
     public String changeFormatDate(String dateInput) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         java.util.Date date = null;
         try {
             date = dateFormat.parse(dateInput);

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * TODO
+ * The filter, which does not allow to work with service users who are not logged in
  * */
 @WebFilter("/admin/*")
 public class AdministrationsFilter implements Filter {

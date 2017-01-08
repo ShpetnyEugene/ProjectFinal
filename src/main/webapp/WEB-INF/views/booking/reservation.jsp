@@ -27,25 +27,25 @@
             <c:forEach var="schedule" varStatus="status" items="${schedules}">
                 <tr>
 
-                <th>${schedule.scheduleId}</th>
-                <th>${stationStart}</th>
-                <th>${stationEnd}</th>
-                <th>${schedule.arrivalTime}</th>
-                <th>${schedule.departureTime}</th>
-                <th>${schedule.price}</th>
-                <c:forEach var="train" begin="${status.index}" end="${status.index}" items="${trains}">
-                    <th>${train.name}</th>
-                    <th>${train.numberFreePlaces}</th>
-                    <th>
-                        <form name="reservation" action="${pageContext.request.contextPath}/ticket-purchase"
-                              method="post">
-                            <button type="submit" name="reservation" value="${train.idTrain}"><fmt:message key="reservation" bundle="${messages}"/></button>
-                        </form>
-                    </th>
-                </c:forEach>
+                    <th>${schedule.scheduleId}</th>
+                    <th>${stationStart}</th>
+                    <th>${stationEnd}</th>
+                    <th>${schedule.arrivalTime}</th>
+                    <th>${schedule.departureTime}</th>
+                    <th>${schedule.price}</th>
+                    <c:forEach var="train" begin="${status.index}" end="${status.index}" items="${trains}">
+                        <th>${train.name}</th>
+                        <th>${train.numberFreePlaces}</th>
+                        <th>
+                            <form name="reservation" action="${pageContext.request.contextPath}/ticket-purchase"
+                                  method="post">
+                                <button type="submit" name="reservation" value="${train.idTrain}"><fmt:message
+                                        key="reservation" bundle="${messages}"/></button>
+                            </form>
+                        </th>
+                    </c:forEach>
                 </tr>
             </c:forEach>
-
             </tbody>
         </table>
 

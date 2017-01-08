@@ -11,8 +11,8 @@ import java.util.List;
 /**
  * @author Shpetny Eugene
  * @version 1.0
- * */
-public class UserServiceImpl implements UserService{
+ */
+public class UserServiceImpl implements UserService {
 
     // Variable on which is synchronized
     private final static Object lock = new Object();
@@ -82,13 +82,23 @@ public class UserServiceImpl implements UserService{
         }
     }
 
-
+    /**
+     * The method of finding the user for a given login
+     *
+     * @param login user that you want to find in the database
+     * @return true if the user with the login is found, false otherwise
+     */
     public boolean checkUserByLogin(String login) {
         UserDao userDao = new UserDao(new Executor(ConnectionFactory.getConnection()));
         return userDao.findByLogin(login) != null;
     }
 
-
+    /**
+     * Methods for the user's location with a given identification number
+     *
+     * @param identificationNumber - parameter user that you want to find in the database
+     * @return true if the user with the login is found, false otherwise
+     */
     public boolean checkUserByIdentificationNumber(String identificationNumber) {
         UserDao userDao = new UserDao(new Executor(ConnectionFactory.getConnection()));
         return userDao.findByIdentificationNumber(identificationNumber) != null;

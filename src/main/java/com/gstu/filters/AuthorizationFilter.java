@@ -10,7 +10,7 @@ import java.io.IOException;
 
 
 /**
- * TODO
+ * The filter, which does not allow to work with the Administration menu, the user who has the role - USER
  * */
 @WebFilter("/*")
 public class AuthorizationFilter implements Filter {

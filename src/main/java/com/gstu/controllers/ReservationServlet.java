@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@WebServlet("/order-tickets/reservation")
+@WebServlet("/order-tickets/booking")
 public class ReservationServlet extends HttpServlet {
 
 
@@ -41,7 +41,8 @@ public class ReservationServlet extends HttpServlet {
 
         if (StringUtils.isBlank(stationStart)
                 || StringUtils.isBlank(stationEnd)
-                || StringUtils.isBlank(dateStart)) {
+                || StringUtils.isBlank(dateStart) ||  start == -1
+                || end == -1) {
             ViewUtils.doView("/booking/reservation", resp, req);
             List<Schedule> schedules = res.selectionStation(start, end, date);
             req.setAttribute("schedules", schedules);

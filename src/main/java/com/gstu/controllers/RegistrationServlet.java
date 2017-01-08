@@ -50,40 +50,42 @@ public class RegistrationServlet extends HttpServlet {
         String locale = String.valueOf((req.getSession().getAttribute("locale")));
 
         if ((StringUtils.isBlank(lastName)
-                || StringUtils.isBlank(firstName) || StringUtils.isBlank(patronymic)
-                || StringUtils.isBlank(password) || StringUtils.isBlank(login)
-                || StringUtils.isBlank(birthDay) || StringUtils.isBlank(identificationNumber))) {
-            if (locale.equals("ru_RU")) {
-                errorMessages += "Все поля обязательно должны быть заполнены !";
+                || StringUtils.isBlank(firstName) || StringUtils.isBlank(password)
+                || StringUtils.isBlank(login) || StringUtils.isBlank(birthDay)
+                || StringUtils.isBlank(identificationNumber))) {
+            if (locale.equals("en_EN")) {
+                errorMessages = "All fields must be filled (except the field \"patronymic\")!";
             } else {
-                errorMessages += "All fields must be filled!";
+                errorMessages = "Все поля обязательно должны быть заполнены (кроме поля \"отчество\") !";
             }
             req.setAttribute("error", errorMessages);
             ViewUtils.doView("registration", resp, req);
-        }
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.mm.yyyy");
-        java.util.Date date = null;
-        try {
-            date = dateFormat.parse(birthDay);
-        } catch (ParseException e) {
-            log.error(e);
-            e.printStackTrace();
-        }
-        SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
-        Date birthdayDate = Date.valueOf(dateFormat1.format(date));
-
-
-
-        if (!userService.addUser(new User(firstName, lastName, patronymic, birthdayDate, identificationNumber, login, password, Role.USER))) {
-
-           // TODO Исправить сообщение тут нужно тащить локаль
-            errorMessages = "1";
-            req.setAttribute("error", errorMessages);
-            ViewUtils.doView("registration", resp, req);
         } else {
-            log.info("Registers new User");
-            resp.sendRedirect("/login");
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+            java.util.Date date = null;
+            try {
+                date = dateFormat.parse(birthDay);
+            } catch (ParseException e) {
+                log.error(e);
+                e.printStackTrace();
+            }
+            SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+            Date birthdayDate = Date.valueOf(dateFormat1.format(date));
+
+
+            if (!userService.addUser(new User(firstName, lastName, patronymic, birthdayDate, identificationNumber, login, password, Role.USER))) {
+
+                if (locale.equals("en_EN")) {
+                    errorMessages = "The \"login\" or \"identification number\" already exists";
+                } else {
+                    errorMessages = "Поле \"логин\" или \"идентификационный номер\" уже существует";
+                }
+                req.setAttribute("error", errorMessages);
+                ViewUtils.doView("registration", resp, req);
+            } else {
+                ViewUtils.doView("login", resp, req);
+            }
         }
     }
 

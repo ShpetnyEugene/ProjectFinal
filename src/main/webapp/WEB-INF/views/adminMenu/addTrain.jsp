@@ -8,8 +8,7 @@
     <jsp:body>
 
         <div class="page-header">
-            <h1>Добавление нового пользователя</h1>
-            <p class="lead">Описание</p>
+            <h1><fmt:message key="enterNewTrain" bundle="${messages}"/></h1>
         </div>
 
         <div class="row">

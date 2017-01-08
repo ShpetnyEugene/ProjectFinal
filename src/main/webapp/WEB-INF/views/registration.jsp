@@ -5,9 +5,8 @@
 <fmt:setLocale value="${locale}"/>
 <fmt:setBundle basename="messages" var="messages"/>
 
-<title>Registration</title>
 
-<t:_layout>
+<t:_layout title="Registration">
 
     <jsp:body>
         <div class="page-header">
@@ -15,9 +14,7 @@
         </div>
         <div class="row">
             <div class="col-md-8">
-                <p class="lead">описание прав пользователя Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab
-                    ad adipisci alias amet assumenda, earum exercitationem expedita illum minima non obcaecati pariatur
-                    quae quia quos reprehenderit sint, suscipit tempora veniam.</p>
+                <p class="lead"><fmt:message key="registrationMessage" bundle="${messages}"/></p>
             </div>
             <div class="col-md-4">
 
@@ -54,7 +51,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label  " for="inputEmail"><fmt:message key="login"
+                        <label class="control-label  " for="inputEmail"><fmt:message key="email"
                                                                                      bundle="${messages}"/>
                             <input type="email" name="login" class="form-control" id="inputEmail"
                                    placeholder="Email"></label>
