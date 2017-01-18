@@ -37,31 +37,30 @@ public class ReservationServlet extends HttpServlet {
 
         long start = orderTicketsService.findId(stationStart);
         long end = orderTicketsService.findId(stationEnd);
-        String date = dateUtils.changeFormatDate(dateStart);
+
 
         if (StringUtils.isBlank(stationStart)
                 || StringUtils.isBlank(stationEnd)
-                || StringUtils.isBlank(dateStart) ||  start == -1
+                || StringUtils.isBlank(dateStart) || start == -1
                 || end == -1) {
             ViewUtils.doView("/booking/reservation", resp, req);
+        } else {
+            String date = dateUtils.changeFormatDate(dateStart);
+
             List<Schedule> schedules = res.selectionStation(start, end, date);
             req.setAttribute("schedules", schedules);
+
+            req.setAttribute("stationStart", stationStart);
+            req.setAttribute("stationEnd", stationEnd);
+
+            List<Train> trains = schedules.stream()
+                    .map(s -> trainServices.getTrainById(s.getTrain_idTrain()))
+                    .collect(Collectors.toList());
+
+            req.setAttribute("trains", trains);
+
+            ViewUtils.doView("/booking/reservation", resp, req);
         }
-
-        List<Schedule> schedules = res.selectionStation(start, end, date);
-        req.setAttribute("schedules", schedules);
-
-        req.setAttribute("stationStart", stationStart);
-        req.setAttribute("stationEnd", stationEnd);
-
-        List<Train> trains = schedules.stream()
-                .map(s -> trainServices.getTrainById(s.getTrain_idTrain()))
-                .collect(Collectors.toList());
-
-        req.setAttribute("trains", trains);
-
-        ViewUtils.doView("/booking/reservation", resp, req);
-
     }
 
     @Override

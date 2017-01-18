@@ -11,7 +11,8 @@ public class StationServiceImpl implements StationService {
     private StationDao stationDao;
 
     public StationServiceImpl() {
-        this.stationDao = new StationDao(new Executor(ConnectionFactory.getConnection()));
+        this.stationDao = new StationDao(new Executor(ConnectionFactory.getInstance().getConnection()));
+//        this.stationDao = new StationDao(new Executor(ConnectionFactory.getConnection()));
     }
 
     /**

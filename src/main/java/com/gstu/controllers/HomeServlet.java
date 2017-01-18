@@ -1,6 +1,7 @@
 package com.gstu.controllers;
 
 import com.gstu.utils.ViewUtils;
+import org.apache.log4j.Logger;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +11,7 @@ import java.io.IOException;
 
 @WebServlet("/home")
 public class HomeServlet extends HttpServlet {
+    private static final Logger log = Logger.getLogger(HomeServlet.class);
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         ViewUtils.doView("home",response,request);

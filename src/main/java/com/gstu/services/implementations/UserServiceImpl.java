@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
     private final UserDao userDao;
 
     UserServiceImpl() {
-        this.userDao = new UserDao(new Executor(ConnectionFactory.getConnection()));
+        this.userDao = new UserDao(new Executor(ConnectionFactory.getInstance().getConnection()));
     }
 
     /**
@@ -89,7 +89,6 @@ public class UserServiceImpl implements UserService {
      * @return true if the user with the login is found, false otherwise
      */
     public boolean checkUserByLogin(String login) {
-        UserDao userDao = new UserDao(new Executor(ConnectionFactory.getConnection()));
         return userDao.findByLogin(login) != null;
     }
 
@@ -100,7 +99,6 @@ public class UserServiceImpl implements UserService {
      * @return true if the user with the login is found, false otherwise
      */
     public boolean checkUserByIdentificationNumber(String identificationNumber) {
-        UserDao userDao = new UserDao(new Executor(ConnectionFactory.getConnection()));
         return userDao.findByIdentificationNumber(identificationNumber) != null;
     }
 }

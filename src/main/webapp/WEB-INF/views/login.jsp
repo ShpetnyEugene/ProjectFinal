@@ -20,8 +20,8 @@
             <div class="col-md-4">
                 <form class="form-signin" method="post">
                     <div class="form-group">
-                        <label for="exampleInputEmail1"><fmt:message key="emailAdress" bundle="${messages}"/></label>
-                        <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+                        <label lang="en" for="exampleInputEmail1"><fmt:message key="emailAdress" bundle="${messages}"/></label>
+                        <input  type="email" name="email" class="form-control" id="exampleInputEmail1"
                                placeholder="<fmt:message key="emailAdress" bundle="${messages}"/>" required autofocus>
                     </div>
                     <div class="form-group">

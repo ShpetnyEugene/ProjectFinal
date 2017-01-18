@@ -37,5 +37,6 @@ public class TicketPurchase extends HttpServlet {
         reservationService.insertTicket(user.getIdUser());
         req.getSession().setAttribute("accountNumber", a + (int) (Math.random() * 1_000_000_000));
         resp.sendRedirect("/successfully");
+
     }
 }

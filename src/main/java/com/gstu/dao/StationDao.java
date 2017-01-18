@@ -22,7 +22,8 @@ public class StationDao implements CrudDao<Station, Long> {
 
     private static final String SELECT_ID_BY_NAME = "SELECT * FROM station WHERE name = ? OR name_ru = ? ";
 
-    private Executor executor = new Executor(ConnectionFactory.getConnection());
+    private Executor executor = new Executor(ConnectionFactory.getInstance().getConnection());
+
 
     public StationDao(Executor executor) {
         this.executor = executor;

@@ -1,107 +1,81 @@
 package com.gstu.services;
 
-import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.log4j.Logger;
 
-import java.beans.PropertyVetoException;
-import java.io.IOException;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ConnectionFactory {
 
+    private static ConnectionFactory instance = null;
+    private List<Connection> connections;
+    private ResourceBundle properties = null;
+    private static Logger logger = Logger.getLogger(ConnectionFactory.class);
+    private static final int SIZE = 100;
 
-//    private ConnectionFactory() {
-//        // Don't allow to create instances
-//    }
-//
-//    private static volatile Connection connection;
-//
-//
-//    public static Connection getConnection() {
-//        try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        Connection localInstance = connection;
-//        if (localInstance == null) {
-//            synchronized (ConnectionFactory.class) {
-//                localInstance = connection;
-//                if (localInstance == null) {
-//                    connection = localInstance = createConnection();
-//                }
-//            }
-//        }
-//        return localInstance;
-//    }
-//
-//    private static Connection createConnection() {
-//
-//        ResourceBundle properties = ResourceBundle.getBundle("settings");
-//        String url = properties.getString("url");
-//        String user = properties.getString("user");
-//        String password = properties.getString("password");
-//
-//        try {
-//            return DriverManager.getConnection(url, user, password);
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-//
-
-
-
-
-
-
-
-
-
-
-
-    private ConnectionFactory() {
-        // Don't allow to create instances
+    /**
+     * Getting manager object
+     *
+     * @return Manager object
+     */
+    public synchronized static ConnectionFactory getInstance() {
+        if (instance == null)
+            instance = new ConnectionFactory();
+        return instance;
     }
 
-    private static BasicDataSource ds;
+    /**
+     * Creating queue connections to the database
+     */
+    private ConnectionFactory() {
 
-    private static BasicDataSource init() throws IOException, SQLException, PropertyVetoException {
-
-        ResourceBundle properties = ResourceBundle.getBundle("settings");
+        properties = ResourceBundle.getBundle("settings");
+        connections = new ArrayList<Connection>();
         String url = properties.getString("url");
         String user = properties.getString("user");
         String password = properties.getString("password");
 
-
-
-        BasicDataSource ds = new BasicDataSource();
-        ds.setDriverClassName("com.mysql.jdbc.Driver");
-        ds.setUsername(user);
-        ds.setPassword(password);
-        ds.setUrl(url);
-
-        // the settings below are optional -- dbcp can work with defaults
-        ds.setMinIdle(1);
-        ds.setMaxIdle(10);
-        ds.setMaxOpenPreparedStatements(180);
-
-        return ds;
-    }
-
-    public static Connection getConnection() {
-
-        Connection connection;
         try {
-            if (ds == null) {
-                ds = init();
+            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+            for (int i = 0; i < SIZE; i++) {
+                try {
+                    connections.add(
+                            DriverManager.getConnection(url, user, password));
+                } catch (SQLException e) {
+                    logger.error(e);
+                }
             }
-            connection = ds.getConnection();
-        } catch (Exception ex) {
-            throw new RuntimeException("Connection exception ", ex);
+        } catch (SQLException e1) {
+            logger.error(e1);
         }
 
-        return connection;
+    }
+
+    /**
+     * Getting the connection to database from queue
+     *
+     * @return Database connection
+     */
+    public synchronized Connection getConnection() {
+        if (connections.size() != 0) {
+            return connections.remove(0);
+        }else {
+
+        }
+        return null;
+    }
+
+    /**
+     * Placing the connection to the database in queue
+     *
+     * @param cn Database connection
+     */
+    public synchronized void putConnection(Connection cn) {
+        if (connections.size() < 10)
+            connections.add(cn);
     }
 }

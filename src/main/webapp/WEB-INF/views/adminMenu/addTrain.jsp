@@ -4,12 +4,18 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="${locale}"/>
 <fmt:setBundle basename="messages" var="messages"/>
+
 <t:_layout title="Add Train">
     <jsp:body>
+
 
         <div class="page-header">
             <h1><fmt:message key="enterNewTrain" bundle="${messages}"/></h1>
         </div>
+
+        <c:if test="${successfully == 1}">
+            <p class="bg-success" style="text-align: center"><fmt:message key="recordAdd" bundle="${messages}"/></p>
+        </c:if>
 
         <div class="row">
             <div class="col-md-4"></div>
@@ -19,7 +25,8 @@
                         <label for="firstName">
                             <fmt:message key="nameTrain" bundle="${messages}"/>
                         </label>
-                        <input type="text" name="name" class="form-control" id="firstName" placeholder="<fmt:message key="enterNameTrain" bundle="${messages}"/>">
+                        <input type="text" name="name" class="form-control" id="firstName"
+                               placeholder="<fmt:message key="enterNameTrain" bundle="${messages}"/>">
                     </div>
                     <div class="form-group">
                         <label for="lastName">

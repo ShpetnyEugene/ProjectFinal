@@ -13,16 +13,18 @@
                 <a href="${pageContext.request.contextPath}/admin/trains/add"><fmt:message key="addRecords"
                                                                                            bundle="${messages}"/></a>
             </li>
+
+            <li class="list-group-item">
+                <a href="${pageContext.request.contextPath}/admin/trains"><fmt:message key="showAllTrains"
+                                                                                       bundle="${messages}"/></a>
+            </li>
+
+            <li class="list-group-item list-group-item-info"><fmt:message key="userControl" bundle="${messages}"/></li>
             <li class="list-group-item">
                 <a href="${pageContext.request.contextPath}/admin/users"><fmt:message key="showAllUsers"
                                                                                       bundle="${messages}"/></a>
             </li>
 
-            <li class="list-group-item list-group-item-info"><fmt:message key="userControl" bundle="${messages}"/></li>
-            <li class="list-group-item">
-                <a href="${pageContext.request.contextPath}/admin/trains"><fmt:message key="showAllTrains"
-                                                                                       bundle="${messages}"/></a>
-            </li>
         </ul>
     </jsp:body>
 </t:_layout>

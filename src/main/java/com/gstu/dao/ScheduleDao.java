@@ -20,7 +20,8 @@ public class ScheduleDao implements CrudDao<Schedule, Long> {
 
     private static final String FIND_PRICE_BY_ID = "SELECT * FROM train INNER JOIN schedule ON train.idTrain = schedule.train_idTrain WHERE train.idTrain = ?";
 
-    private Executor executor = new Executor(ConnectionFactory.getConnection());
+    private Executor executor = new Executor(ConnectionFactory.getInstance().getConnection());
+
 
 
     public List<Schedule> selectD(long start, long end, String date) {

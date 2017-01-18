@@ -10,7 +10,7 @@ import java.util.List;
 
 public class TicketDao implements CrudDao<Ticket, Long> {
 
-    private Executor executor = new Executor(ConnectionFactory.getConnection());
+    private Executor executor = new Executor(ConnectionFactory.getInstance().getConnection());
     private static Logger log = Logger.getLogger(Ticket.class);
 
     // QUERIES

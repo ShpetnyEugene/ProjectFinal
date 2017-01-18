@@ -12,8 +12,8 @@
             <thead>
             <tr>
                 <th style="width: auto"><fmt:message key="id" bundle="${messages}"/></th>
-                <th style="width: auto"><fmt:message key="stationStart" bundle="${messages}"/></th>
                 <th style="width: auto"><fmt:message key="departureStation" bundle="${messages}"/></th>
+                <th style="width: auto"><fmt:message key="stationStart" bundle="${messages}"/></th>
                 <th style="width: auto"><fmt:message key="ArrivalDate" bundle="${messages}"/></th>
                 <th style="width: auto"><fmt:message key="DepartureDate" bundle="${messages}"/></th>
                 <th style="width: auto"><fmt:message key="price" bundle="${messages}"/></th>
