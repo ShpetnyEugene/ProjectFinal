@@ -18,7 +18,6 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-
 @WebServlet("/registration")
 public class RegistrationServlet extends HttpServlet {
 
@@ -84,7 +83,7 @@ public class RegistrationServlet extends HttpServlet {
                 req.setAttribute("error", errorMessages);
                 ViewUtils.doView("registration", resp, req);
             } else {
-                ViewUtils.doView("login", resp, req);
+                resp.sendRedirect("/login");
             }
         }
     }

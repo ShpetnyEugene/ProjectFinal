@@ -17,7 +17,7 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
 
     private UserService service;
-    private Logger log = Logger.getLogger(LoginServlet.class);
+    private static Logger log = Logger.getLogger(LoginServlet.class);
 
     @Override
     public void init() throws ServletException {
@@ -34,9 +34,11 @@ public class LoginServlet extends HttpServlet {
 
         User user = service.getUserByLogin(email);
 
-
         if (user != null && service.checkUserPassword(user, password)) {
             request.getSession().setAttribute("user", user);
+
+            log.info("User login in the system");
+            log.info(user);
             response.sendRedirect("/home");
         } else {
             ViewUtils.doView("login", response, request);

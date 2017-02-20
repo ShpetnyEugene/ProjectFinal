@@ -9,7 +9,7 @@
 		</layout>
 	</appender>
 	<logger name="java">
-		<level value="debug" />
+		<level value="TRACE" />
 	</logger>
 	<root>
 		<appender-ref ref="TxtAppender" />
