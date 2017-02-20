@@ -22,6 +22,5 @@ public class StationMapper implements Mapper<Station> {
         station.setName_ru(resultSet.getString(NAME_RU));
 
         return station;
-
     }
 }

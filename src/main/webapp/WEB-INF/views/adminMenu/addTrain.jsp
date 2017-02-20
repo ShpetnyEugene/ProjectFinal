@@ -8,7 +8,6 @@
 <t:_layout title="Add Train">
     <jsp:body>
 
-
         <div class="page-header">
             <h1><fmt:message key="enterNewTrain" bundle="${messages}"/></h1>
         </div>

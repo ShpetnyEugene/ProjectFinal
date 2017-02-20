@@ -5,7 +5,7 @@
 <fmt:setLocale value="${locale}"/>
 <fmt:setBundle basename="messages" var="messages"/>
 
-<t:_layout>
+<t:_layout title="Error page">
     <jsp:body>
         <h1 style="text-align: center"> <fmt:message key="ouch" bundle="${messages}"/></h1>
         <h3 style="text-align: center"><fmt:message key="error" bundle="${messages}"/></h3>

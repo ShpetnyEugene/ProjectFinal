@@ -2,16 +2,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${locale}"/>
+<fmt:setBundle basename="messages" var="messages"/>
 
-
-<title>Views all users</title>
-
-<t:_layout>
+<t:_layout title="Views all users">
     <jsp:body>
-
-        <fmt:setLocale value="${locale}"/>
-        <fmt:setBundle basename="messages" var="messages"/>
-
         <table class="table table-hover">
             <thead>
             <tr>
